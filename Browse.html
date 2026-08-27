@@ -1,0 +1,2562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Browse | Campus Marketplace</title>
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background: #f7f8fc;
+    color: #111b3a;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+
+    height: 82px;
+
+    background: white;
+
+    border-bottom: 1px solid #e8e8ed;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 7.8%;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+}
+
+
+/* LOGO */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    text-decoration: none;
+
+    color: #111b3a;
+}
+
+.logo-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 11px;
+
+    background: #6338df;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.logo-icon svg {
+
+    width: 28px;
+
+    height: 28px;
+
+    fill: none;
+
+    stroke: white;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+.logo-text {
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    line-height: 1.05;
+}
+
+.logo-text span {
+
+    color: #6338df;
+}
+
+
+/* =====================================================
+   NAV LINKS
+===================================================== */
+
+.nav-links {
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 38px;
+}
+
+.nav-links a {
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+
+    text-decoration: none;
+
+    color: #111b3a;
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+.nav-links a:hover {
+
+    color: #6338df;
+}
+
+.nav-links a.active {
+
+    color: #6338df;
+}
+
+.nav-links a.active::after {
+
+    content: "";
+
+    position: absolute;
+
+    bottom: 0;
+
+    left: 0;
+
+    right: 0;
+
+    height: 3px;
+
+    background: #6338df;
+}
+
+
+/* =====================================================
+   NAV RIGHT
+===================================================== */
+
+.nav-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 22px;
+}
+
+.post-btn {
+
+    height: 48px;
+
+    padding: 0 23px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #6338df;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.post-btn:hover {
+
+    background: #512dc4;
+}
+
+.notification-btn {
+
+    border: none;
+
+    background: transparent;
+
+    cursor: pointer;
+}
+
+.notification-btn svg {
+
+    width: 23px;
+
+    height: 23px;
+
+    fill: none;
+
+    stroke: #111b3a;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+.login-btn {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    text-decoration: none;
+
+    color: #111b3a;
+
+    font-weight: 700;
+
+    font-size: 15px;
+}
+
+.profile-icon {
+
+    width: 39px;
+
+    height: 39px;
+
+    background: #f0f1f5;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.profile-icon svg {
+
+    width: 18px;
+
+    height: 18px;
+
+    fill: none;
+
+    stroke: #596174;
+
+    stroke-width: 1.6;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.page-header {
+
+    background: white;
+
+    padding: 25px 0 28px;
+
+    border-bottom: 1px solid #e5e6eb;
+}
+
+.header-inner {
+
+    width: 84%;
+
+    max-width: 1200px;
+
+    margin: auto;
+}
+
+.page-header h1 {
+
+    font-size: 36px;
+
+    margin-bottom: 8px;
+
+    letter-spacing: -0.5px;
+}
+
+.page-header p {
+
+    color: #697286;
+
+    font-size: 15px;
+}
+
+
+/* =====================================================
+   MAIN
+===================================================== */
+
+.main-container {
+
+    width: 84%;
+
+    max-width: 1200px;
+
+    margin: 30px auto 60px;
+
+    display: grid;
+
+    grid-template-columns: 255px 1fr;
+
+    gap: 26px;
+}
+
+
+/* =====================================================
+   FILTER SIDEBAR
+===================================================== */
+
+.filters {
+
+    background: white;
+
+    border: 1px solid #dedfe6;
+
+    border-radius: 12px;
+
+    padding: 23px;
+
+    height: fit-content;
+}
+
+.filters h2 {
+
+    font-size: 19px;
+
+    margin-bottom: 23px;
+}
+
+.filter-title {
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    margin-bottom: 12px;
+}
+
+.filter-section {
+
+    padding-bottom: 20px;
+
+    margin-bottom: 20px;
+
+    border-bottom: 1px solid #e4e5ea;
+}
+
+
+/* RADIO */
+
+.radio-row {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-bottom: 12px;
+
+    color: #4e586e;
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.radio-row input {
+
+    appearance: none;
+
+    width: 15px;
+
+    height: 15px;
+
+    border: 1.5px solid #8b8f99;
+
+    border-radius: 50%;
+
+    position: relative;
+
+    cursor: pointer;
+}
+
+.radio-row input:checked {
+
+    border-color: #6338df;
+}
+
+.radio-row input:checked::after {
+
+    content: "";
+
+    width: 7px;
+
+    height: 7px;
+
+    background: #6338df;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    top: 2.5px;
+
+    left: 2.5px;
+}
+
+
+/* PRICE */
+
+.price-inputs {
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 8px;
+}
+
+.price-inputs input {
+
+    width: 100%;
+
+    height: 40px;
+
+    border: 1px solid #dcdfe7;
+
+    border-radius: 6px;
+
+    padding: 0 10px;
+
+    outline: none;
+
+    font-size: 12px;
+}
+
+.price-inputs input:focus {
+
+    border-color: #6338df;
+}
+
+
+/* RESET */
+
+.reset-btn {
+
+    width: 100%;
+
+    height: 42px;
+
+    border: 1.5px solid #6338df;
+
+    border-radius: 7px;
+
+    background: white;
+
+    color: #6338df;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.reset-btn:hover {
+
+    background: #f5f1ff;
+}
+
+
+/* =====================================================
+   CONTENT
+===================================================== */
+
+.content {
+
+    min-width: 0;
+}
+
+
+/* SEARCH */
+
+.search-row {
+
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 20px;
+}
+
+.search-box {
+
+    flex: 1;
+
+    height: 52px;
+
+    background: white;
+
+    border: 1px solid #dfe1e8;
+
+    border-radius: 7px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 15px;
+
+    gap: 10px;
+}
+
+.search-box svg {
+
+    width: 17px;
+
+    height: 17px;
+
+    fill: none;
+
+    stroke: #687187;
+
+    stroke-width: 1.8;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+.search-box input {
+
+    border: none;
+
+    outline: none;
+
+    width: 100%;
+
+    font-size: 14px;
+
+    color: #333b50;
+}
+
+.search-button {
+
+    width: 100px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #6338df;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+.search-button:hover {
+
+    background: #512dc4;
+}
+
+
+/* =====================================================
+   CATEGORY BUTTONS
+===================================================== */
+
+.category-buttons {
+
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 25px;
+}
+
+.category-btn {
+
+    padding: 10px 17px;
+
+    border: 1px solid #d9dbe4;
+
+    border-radius: 22px;
+
+    background: white;
+
+    color: #596174;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+}
+
+.category-btn:hover {
+
+    border-color: #6338df;
+
+    color: #6338df;
+}
+
+.category-btn.active {
+
+    background: #6338df;
+
+    color: white;
+
+    border-color: #6338df;
+}
+
+
+/* =====================================================
+   RESULTS HEADER
+===================================================== */
+
+.results-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 18px;
+}
+
+.results-count {
+
+    color: #697286;
+
+    font-size: 13px;
+}
+
+.sort-select {
+
+    height: 42px;
+
+    padding: 0 35px 0 13px;
+
+    border: 1px solid #dfe1e8;
+
+    border-radius: 7px;
+
+    background: white;
+
+    color: #596174;
+
+    outline: none;
+
+    font-size: 12px;
+}
+
+
+/* =====================================================
+   PRODUCT GRID
+===================================================== */
+
+.products {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 20px;
+}
+
+
+/* PRODUCT */
+
+.product {
+
+    background: white;
+
+    border: 1px solid #dfe1e7;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    transition: 0.2s;
+
+    position: relative;
+}
+
+.product:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 9px 25px rgba(25, 28, 50, 0.09);
+}
+
+
+/* IMAGE */
+
+.product-image-container {
+
+    height: 195px;
+
+    position: relative;
+
+    background: #eeeeee;
+
+    overflow: hidden;
+}
+
+.product-image {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: 0.3s;
+}
+
+.product:hover .product-image {
+
+    transform: scale(1.03);
+}
+
+
+/* HEART */
+
+.heart {
+
+    position: absolute;
+
+    top: 12px;
+
+    right: 12px;
+
+    width: 35px;
+
+    height: 35px;
+
+    border-radius: 50%;
+
+    border: none;
+
+    background: white;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 2px 9px rgba(0,0,0,0.13);
+
+    z-index: 5;
+}
+
+.heart svg {
+
+    width: 19px;
+
+    height: 19px;
+
+    fill: none;
+
+    stroke: #34405a;
+
+    stroke-width: 1.6;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+.heart.active svg {
+
+    fill: #6338df;
+
+    stroke: #6338df;
+}
+
+
+/* PRODUCT INFO */
+
+.product-info {
+
+    padding: 14px 15px 16px;
+}
+
+.product-name {
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    line-height: 1.35;
+
+    min-height: 40px;
+
+    margin-bottom: 13px;
+}
+
+.price {
+
+    color: #078143;
+
+    font-size: 18px;
+
+    font-weight: 700;
+
+    margin-bottom: 13px;
+}
+
+
+/* REMOVE LOCATION COMPLETELY */
+
+.product-bottom {
+
+    border-top: 1px solid #e8e9ed;
+
+    padding-top: 11px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-start;
+}
+
+.condition {
+
+    display: inline-block;
+
+    padding: 6px 9px;
+
+    background: #eaf8f0;
+
+    color: #078143;
+
+    border-radius: 5px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.empty {
+
+    grid-column: 1 / -1;
+
+    background: white;
+
+    border: 1px solid #e0e2e8;
+
+    border-radius: 10px;
+
+    padding: 55px 20px;
+
+    text-align: center;
+
+    display: none;
+}
+
+.empty h2 {
+
+    font-size: 20px;
+
+    margin-bottom: 8px;
+}
+
+.empty p {
+
+    color: #71798a;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   NOTIFICATION
+===================================================== */
+
+.notification-popup {
+
+    position: fixed;
+
+    top: 92px;
+
+    right: 8%;
+
+    width: 280px;
+
+    padding: 18px;
+
+    background: white;
+
+    border: 1px solid #dddfe5;
+
+    border-radius: 9px;
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.15);
+
+    display: none;
+
+    z-index: 2000;
+}
+
+.notification-popup.show {
+
+    display: block;
+}
+
+.notification-popup h3 {
+
+    font-size: 15px;
+
+    margin-bottom: 7px;
+}
+
+.notification-popup p {
+
+    color: #71798a;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .navbar {
+
+        padding: 0 4%;
+    }
+
+    .nav-links {
+
+        gap: 20px;
+    }
+
+    .main-container,
+    .header-inner {
+
+        width: 92%;
+    }
+
+    .products {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .nav-links {
+
+        display: none;
+    }
+
+    .main-container {
+
+        grid-template-columns: 1fr;
+    }
+
+    .filters {
+
+        width: 100%;
+    }
+
+    .products {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .navbar {
+
+        height: 70px;
+    }
+
+    .post-btn,
+    .notification-btn {
+
+        display: none;
+    }
+
+    .login-btn span {
+
+        display: none;
+    }
+
+    .page-header h1 {
+
+        font-size: 28px;
+    }
+
+    .main-container {
+
+        width: 92%;
+
+        margin-top: 20px;
+    }
+
+    .search-row {
+
+        flex-direction: column;
+    }
+
+    .search-button {
+
+        width: 100%;
+
+        height: 45px;
+    }
+
+    .products {
+
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+
+        <div class="logo-icon">
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M3 9.5 12 5l9 4.5-9 4.5L3 9.5Z"
+                ></path>
+
+                <path
+                    d="M6 11.2V16c3.5 2.3 8.5 2.3 12 0v-4.8"
+                ></path>
+
+                <path
+                    d="M21 10v5"
+                ></path>
+
+            </svg>
+
+        </div>
+
+
+        <div class="logo-text">
+
+            Campus<br>
+
+            <span>
+                Marketplace
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <nav class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a
+            href="Browse.html"
+            class="active"
+        >
+            Browse
+        </a>
+
+        <a href="Categories.html">
+            Categories
+        </a>
+
+        <a href="how-it-works.html">
+            How It Works
+        </a>
+
+        <a href="about.html">
+            About Us
+        </a>
+
+    </nav>
+
+
+    <div class="nav-right">
+
+        <button
+            class="post-btn"
+            onclick="window.location.href='post-item.html'"
+        >
+            + Post an Item
+        </button>
+
+
+        <button
+            class="notification-btn"
+            onclick="toggleNotifications()"
+        >
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
+                ></path>
+
+                <path
+                    d="M10 21h4"
+                ></path>
+
+            </svg>
+
+        </button>
+
+
+        <a
+            href="Login.html"
+            class="login-btn"
+        >
+
+            <div class="profile-icon">
+
+                <svg viewBox="0 0 24 24">
+
+                    <circle
+                        cx="12"
+                        cy="8"
+                        r="3.5"
+                    ></circle>
+
+                    <path
+                        d="M5 21c.6-4 3-6 7-6s6.4 2 7 6"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+            <span>
+                Login
+            </span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     NOTIFICATION
+===================================================== -->
+
+<div
+    class="notification-popup"
+    id="notificationPopup"
+>
+
+    <h3>
+        Notifications
+    </h3>
+
+    <p>
+        You currently have no new notifications.
+    </p>
+
+</div>
+
+
+<!-- =====================================================
+     PAGE HEADER
+===================================================== -->
+
+<section class="page-header">
+
+    <div class="header-inner">
+
+        <h1>
+            Browse Listings
+        </h1>
+
+        <p>
+            Discover great products from students around your campus.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main class="main-container">
+
+
+    <!-- =================================================
+         FILTERS
+    ================================================== -->
+
+    <aside class="filters">
+
+
+        <h2>
+            Filters
+        </h2>
+
+
+        <!-- CATEGORY -->
+
+        <div class="filter-section">
+
+            <div class="filter-title">
+                Category
+            </div>
+
+
+            <label class="radio-row">
+
+                <input
+                    type="radio"
+                    name="categoryFilter"
+                    value="All"
+                    checked
+                    onchange="applyFilters()"
+                >
+
+                All Categories
+
+            </label>
+
+
+            <label class="radio-row">
+
+                <input
+                    type="radio"
+                    name="categoryFilter"
+                    value="Books & Notes"
+                    onchange="applyFilters()"
+                >
+
+                Books & Notes
+
+            </label>
+
+
+            <label class="radio-row">
+
+                <input
+                    type="radio"
+                    name="categoryFilter"
+                    value="Electronics"
+                    onchange="applyFilters()"
+                >
+
+                Electronics
+
+            </label>
+
+
+            <label class="radio-row">
+
+                <input
+                    type="radio"
+                    name="categoryFilter"
+                    value="Furniture"
+                    onchange="applyFilters()"
+                >
+
+                Furniture
+
+            </label>
+
+
+            <label class="radio-row">
+
+                <input
+                    type="radio"
+                    name="categoryFilter"
+                    value="Clothing"
+                    onchange="applyFilters()"
+                >
+
+                Clothing
+
+            </label>
+
+
+            <label class="radio-row">
+
+                <input
+                    type="radio"
+                    name="categoryFilter"
+                    value="Sports"
+                    onchange="applyFilters()"
+                >
+
+                Sports
+
+            </label>
+
+
+            <label class="radio-row">
+
+                <input
+                    type="radio"
+                    name="categoryFilter"
+                    value="Hobbies"
+                    onchange="applyFilters()"
+                >
+
+                Hobbies
+
+            </label>
+
+        </div>
+
+
+        <!-- PRICE -->
+
+        <div class="filter-section">
+
+            <div class="filter-title">
+                Price Range
+            </div>
+
+
+            <div class="price-inputs">
+
+                <input
+                    type="number"
+                    id="minPrice"
+                    placeholder="Min"
+                    oninput="applyFilters()"
+                >
+
+
+                <input
+                    type="number"
+                    id="maxPrice"
+                    placeholder="Max"
+                    oninput="applyFilters()"
+                >
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="reset-btn"
+            onclick="resetFilters()"
+        >
+            Reset Filters
+        </button>
+
+    </aside>
+
+
+    <!-- =================================================
+         CONTENT
+    ================================================== -->
+
+    <section class="content">
+
+
+        <!-- SEARCH -->
+
+        <div class="search-row">
+
+            <div class="search-box">
+
+                <svg viewBox="0 0 24 24">
+
+                    <circle
+                        cx="11"
+                        cy="11"
+                        r="7"
+                    ></circle>
+
+                    <path
+                        d="m20 20-4-4"
+                    ></path>
+
+                </svg>
+
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search books, electronics, furniture..."
+                    oninput="applyFilters()"
+                >
+
+            </div>
+
+
+            <button
+                class="search-button"
+                onclick="applyFilters()"
+            >
+                Search
+            </button>
+
+        </div>
+
+
+        <!-- CATEGORY BUTTONS -->
+
+        <div class="category-buttons">
+
+
+            <button
+                class="category-btn active"
+                data-category="All"
+                onclick="selectCategory(this, 'All')"
+            >
+                All
+            </button>
+
+
+            <button
+                class="category-btn"
+                data-category="Books & Notes"
+                onclick="selectCategory(this, 'Books & Notes')"
+            >
+                Books & Notes
+            </button>
+
+
+            <button
+                class="category-btn"
+                data-category="Electronics"
+                onclick="selectCategory(this, 'Electronics')"
+            >
+                Electronics
+            </button>
+
+
+            <button
+                class="category-btn"
+                data-category="Furniture"
+                onclick="selectCategory(this, 'Furniture')"
+            >
+                Furniture
+            </button>
+
+
+            <button
+                class="category-btn"
+                data-category="Clothing"
+                onclick="selectCategory(this, 'Clothing')"
+            >
+                Clothing
+            </button>
+
+
+            <button
+                class="category-btn"
+                data-category="Sports"
+                onclick="selectCategory(this, 'Sports')"
+            >
+                Sports
+            </button>
+
+
+            <button
+                class="category-btn"
+                data-category="Hobbies"
+                onclick="selectCategory(this, 'Hobbies')"
+            >
+                Hobbies
+            </button>
+
+        </div>
+
+
+        <!-- RESULTS HEADER -->
+
+        <div class="results-header">
+
+            <div
+                class="results-count"
+                id="resultsCount"
+            >
+                Showing 6 listings
+            </div>
+
+
+            <select
+                class="sort-select"
+                id="sortSelect"
+                onchange="sortProducts()"
+            >
+
+                <option value="newest">
+                    Newest
+                </option>
+
+                <option value="low">
+                    Price: Low to High
+                </option>
+
+                <option value="high">
+                    Price: High to Low
+                </option>
+
+                <option value="name">
+                    Name
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- =================================================
+             PRODUCTS
+        ================================================== -->
+
+        <div
+            class="products"
+            id="products"
+        >
+
+
+            <!-- PRODUCT 1 -->
+
+            <div
+                class="product"
+                data-name="Engineering Mathematics Book"
+                data-category="Books & Notes"
+                data-price="350"
+                onclick="openProduct(this)"
+            >
+
+                <div class="product-image-container">
+
+                    <img
+                        class="product-image"
+                        src="https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=700&q=85"
+                        alt="Engineering Mathematics Book"
+                    >
+
+
+                    <button
+                        class="heart"
+                        onclick="toggleHeart(event, this)"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M20.8 8.8c0 5.2-8.8 10.2-8.8 10.2S3.2 14 3.2 8.8A4.8 4.8 0 0 1 12 6.2a4.8 4.8 0 0 1 8.8 2.6Z"
+                            ></path>
+
+                        </svg>
+
+                    </button>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Engineering Mathematics Book
+                    </div>
+
+
+                    <div class="price">
+                        ₹350
+                    </div>
+
+
+                    <div class="product-bottom">
+
+                        <span class="condition">
+                            Good Condition
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 2 -->
+
+            <div
+                class="product"
+                data-name="HP Pavilion Laptop"
+                data-category="Electronics"
+                data-price="28000"
+                onclick="openProduct(this)"
+            >
+
+                <div class="product-image-container">
+
+                    <img
+                        class="product-image"
+                        src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=700&q=85"
+                        alt="HP Pavilion Laptop"
+                    >
+
+
+                    <button
+                        class="heart"
+                        onclick="toggleHeart(event, this)"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M20.8 8.8c0 5.2-8.8 10.2-8.8 10.2S3.2 14 3.2 8.8A4.8 4.8 0 0 1 12 6.2a4.8 4.8 0 0 1 8.8 2.6Z"
+                            ></path>
+
+                        </svg>
+
+                    </button>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        HP Pavilion Laptop
+                    </div>
+
+
+                    <div class="price">
+                        ₹28,000
+                    </div>
+
+
+                    <div class="product-bottom">
+
+                        <span class="condition">
+                            Like New
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 3 -->
+
+            <div
+                class="product"
+                data-name="Study Chair"
+                data-category="Furniture"
+                data-price="1200"
+                onclick="openProduct(this)"
+            >
+
+                <div class="product-image-container">
+
+                    <img
+                        class="product-image"
+                        src="https://images.unsplash.com/photo-1598300042247-d088f8ab3a91?auto=format&fit=crop&w=700&q=85"
+                        alt="Study Chair"
+                    >
+
+
+                    <button
+                        class="heart"
+                        onclick="toggleHeart(event, this)"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M20.8 8.8c0 5.2-8.8 10.2-8.8 10.2S3.2 14 3.2 8.8A4.8 4.8 0 0 1 12 6.2a4.8 4.8 0 0 1 8.8 2.6Z"
+                            ></path>
+
+                        </svg>
+
+                    </button>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Study Chair
+                    </div>
+
+
+                    <div class="price">
+                        ₹1,200
+                    </div>
+
+
+                    <div class="product-bottom">
+
+                        <span class="condition">
+                            Good Condition
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 4 -->
+
+            <div
+                class="product"
+                data-name="Boat Headphones"
+                data-category="Electronics"
+                data-price="1000"
+                onclick="openProduct(this)"
+            >
+
+                <div class="product-image-container">
+
+                    <img
+                        class="product-image"
+                        src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=85"
+                        alt="Boat Headphones"
+                    >
+
+
+                    <button
+                        class="heart"
+                        onclick="toggleHeart(event, this)"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M20.8 8.8c0 5.2-8.8 10.2-8.8 10.2S3.2 14 3.2 8.8A4.8 4.8 0 0 1 12 6.2a4.8 4.8 0 0 1 8.8 2.6Z"
+                            ></path>
+
+                        </svg>
+
+                    </button>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Boat Headphones
+                    </div>
+
+
+                    <div class="price">
+                        ₹1,000
+                    </div>
+
+
+                    <div class="product-bottom">
+
+                        <span class="condition">
+                            Like New
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 5 -->
+
+            <div
+                class="product"
+                data-name="Skybags Backpack"
+                data-category="Bags"
+                data-price="800"
+                onclick="openProduct(this)"
+            >
+
+                <div class="product-image-container">
+
+                    <img
+                        class="product-image"
+                        src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=85"
+                        alt="Skybags Backpack"
+                    >
+
+
+                    <button
+                        class="heart"
+                        onclick="toggleHeart(event, this)"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M20.8 8.8c0 5.2-8.8 10.2-8.8 10.2S3.2 14 3.2 8.8A4.8 4.8 0 0 1 12 6.2a4.8 4.8 0 0 1 8.8 2.6Z"
+                            ></path>
+
+                        </svg>
+
+                    </button>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Skybags Backpack
+                    </div>
+
+
+                    <div class="price">
+                        ₹800
+                    </div>
+
+
+                    <div class="product-bottom">
+
+                        <span class="condition">
+                            Good Condition
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- PRODUCT 6 -->
+
+            <div
+                class="product"
+                data-name="Yamaha Acoustic Guitar"
+                data-category="Hobbies"
+                data-price="5500"
+                onclick="openProduct(this)"
+            >
+
+                <div class="product-image-container">
+
+                    <img
+                        class="product-image"
+                        src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=700&q=85"
+                        alt="Yamaha Acoustic Guitar"
+                    >
+
+
+                    <button
+                        class="heart"
+                        onclick="toggleHeart(event, this)"
+                    >
+
+                        <svg viewBox="0 0 24 24">
+
+                            <path
+                                d="M20.8 8.8c0 5.2-8.8 10.2-8.8 10.2S3.2 14 3.2 8.8A4.8 4.8 0 0 1 12 6.2a4.8 4.8 0 0 1 8.8 2.6Z"
+                            ></path>
+
+                        </svg>
+
+                    </button>
+
+                </div>
+
+
+                <div class="product-info">
+
+                    <div class="product-name">
+                        Yamaha Acoustic Guitar
+                    </div>
+
+
+                    <div class="price">
+                        ₹5,500
+                    </div>
+
+
+                    <div class="product-bottom">
+
+                        <span class="condition">
+                            Good Condition
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- EMPTY -->
+
+            <div
+                class="empty"
+                id="emptyState"
+            >
+
+                <h2>
+                    No products found
+                </h2>
+
+                <p>
+                    Try changing your search or filters.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<script>
+
+/* =====================================================
+   CURRENT CATEGORY
+===================================================== */
+
+let currentCategory = "All";
+
+
+/* =====================================================
+   OPEN PRODUCT
+===================================================== */
+
+function openProduct(product) {
+
+    const name =
+        product.dataset.name;
+
+    const category =
+        product.dataset.category;
+
+    const price =
+        product.dataset.price;
+
+    /*
+       Location is intentionally NOT included.
+    */
+
+    const params =
+        new URLSearchParams();
+
+    params.set(
+        "name",
+        name
+    );
+
+    params.set(
+        "category",
+        category
+    );
+
+    params.set(
+        "price",
+        price
+    );
+
+    window.location.href =
+        "product.html?" +
+        params.toString();
+
+}
+
+
+/* =====================================================
+   FAVORITE
+===================================================== */
+
+function toggleHeart(
+    event,
+    button
+) {
+
+    event.stopPropagation();
+
+    button.classList.toggle(
+        "active"
+    );
+
+}
+
+
+/* =====================================================
+   CATEGORY BUTTON
+===================================================== */
+
+function selectCategory(
+    button,
+    category
+) {
+
+    currentCategory =
+        category;
+
+
+    document
+        .querySelectorAll(
+            ".category-btn"
+        )
+        .forEach(
+            function(btn) {
+
+                btn.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    button.classList.add(
+        "active"
+    );
+
+
+    document
+        .querySelectorAll(
+            "input[name='categoryFilter']"
+        )
+        .forEach(
+            function(radio) {
+
+                radio.checked =
+                    radio.value === category;
+
+            }
+        );
+
+
+    applyFilters();
+
+}
+
+
+/* =====================================================
+   FILTER
+===================================================== */
+
+function applyFilters() {
+
+    const search =
+        document
+            .getElementById(
+                "searchInput"
+            )
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    const minPrice =
+        Number(
+            document
+                .getElementById(
+                    "minPrice"
+                )
+                .value
+        ) || 0;
+
+
+    const maxInput =
+        document
+            .getElementById(
+                "maxPrice"
+            )
+            .value;
+
+
+    const maxPrice =
+        maxInput === ""
+            ? Infinity
+            : Number(maxInput);
+
+
+    const products =
+        document.querySelectorAll(
+            ".product"
+        );
+
+
+    let visibleCount = 0;
+
+
+    products.forEach(
+        function(product) {
+
+            const name =
+                product.dataset.name
+                    .toLowerCase();
+
+
+            const category =
+                product.dataset.category;
+
+
+            const price =
+                Number(
+                    product.dataset.price
+                );
+
+
+            const matchesSearch =
+                name.includes(search);
+
+
+            const matchesCategory =
+                currentCategory === "All" ||
+                category === currentCategory;
+
+
+            const matchesPrice =
+                price >= minPrice &&
+                price <= maxPrice;
+
+
+            if (
+                matchesSearch &&
+                matchesCategory &&
+                matchesPrice
+            ) {
+
+                product.style.display =
+                    "block";
+
+                visibleCount++;
+
+            } else {
+
+                product.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    document.getElementById(
+        "resultsCount"
+    ).textContent =
+        "Showing " +
+        visibleCount +
+        " listings";
+
+
+    document.getElementById(
+        "emptyState"
+    ).style.display =
+        visibleCount === 0
+            ? "block"
+            : "none";
+
+}
+
+
+/* =====================================================
+   SORT
+===================================================== */
+
+function sortProducts() {
+
+    const sort =
+        document
+            .getElementById(
+                "sortSelect"
+            )
+            .value;
+
+
+    const container =
+        document.getElementById(
+            "products"
+        );
+
+
+    const products =
+        Array.from(
+            container.querySelectorAll(
+                ".product"
+            )
+        );
+
+
+    products.sort(
+        function(a, b) {
+
+            if (sort === "low") {
+
+                return Number(
+                    a.dataset.price
+                ) -
+                Number(
+                    b.dataset.price
+                );
+
+            }
+
+
+            if (sort === "high") {
+
+                return Number(
+                    b.dataset.price
+                ) -
+                Number(
+                    a.dataset.price
+                );
+
+            }
+
+
+            if (sort === "name") {
+
+                return a.dataset.name
+                    .localeCompare(
+                        b.dataset.name
+                    );
+
+            }
+
+
+            return 0;
+
+        }
+    );
+
+
+    products.forEach(
+        function(product) {
+
+            container.appendChild(
+                product
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   RESET FILTERS
+===================================================== */
+
+function resetFilters() {
+
+    document.getElementById(
+        "searchInput"
+    ).value = "";
+
+
+    document.getElementById(
+        "minPrice"
+    ).value = "";
+
+
+    document.getElementById(
+        "maxPrice"
+    ).value = "";
+
+
+    currentCategory =
+        "All";
+
+
+    document
+        .querySelectorAll(
+            "input[name='categoryFilter']"
+        )
+        .forEach(
+            function(radio) {
+
+                radio.checked =
+                    radio.value === "All";
+
+            }
+        );
+
+
+    document
+        .querySelectorAll(
+            ".category-btn"
+        )
+        .forEach(
+            function(button) {
+
+                button.classList.toggle(
+                    "active",
+                    button.dataset.category === "All"
+                );
+
+            }
+        );
+
+
+    applyFilters();
+
+}
+
+
+/* =====================================================
+   NOTIFICATIONS
+===================================================== */
+
+function toggleNotifications() {
+
+    document
+        .getElementById(
+            "notificationPopup"
+        )
+        .classList.toggle(
+            "show"
+        );
+
+}
+
+
+/* =====================================================
+   CLOSE NOTIFICATION
+===================================================== */
+
+document.addEventListener(
+    "click",
+    function(event) {
+
+        const popup =
+            document.getElementById(
+                "notificationPopup"
+            );
+
+        const button =
+            document.querySelector(
+                ".notification-btn"
+            );
+
+
+        if (
+            popup &&
+            button &&
+            !popup.contains(event.target) &&
+            !button.contains(event.target)
+        ) {
+
+            popup.classList.remove(
+                "show"
+            );
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
+
+applyFilters();
+
+
+// ==========================================
+// LOAD CATEGORY FROM CATEGORIES PAGE
+// ==========================================
+
+function loadCategoryFromURL() {
+
+    const params = new URLSearchParams(window.location.search);
+    const selectedCategory = params.get("category");
+
+    // If no category is selected, show all products
+    if (!selectedCategory) {
+        return;
+    }
+
+    const products = document.querySelectorAll(".product");
+
+    let count = 0;
+
+    products.forEach(function(product) {
+
+        const productCategory =
+            product.getAttribute("data-category");
+
+        if (
+            productCategory &&
+            productCategory.toLowerCase() ===
+            selectedCategory.toLowerCase()
+        ) {
+
+            product.style.display = "";
+            count++;
+
+        } else {
+
+            product.style.display = "none";
+
+        }
+
+    });
+
+    // Update "Showing X listings"
+    const listingCount =
+        document.getElementById("listingCount");
+
+    if (listingCount) {
+        listingCount.textContent = count;
+    }
+
+    // Update category buttons
+    document.querySelectorAll(".quick-category").forEach(function(button) {
+
+        button.classList.remove("active");
+
+        const buttonCategory =
+            button.getAttribute("data-category");
+
+        if (
+            buttonCategory &&
+            buttonCategory.toLowerCase() ===
+            selectedCategory.toLowerCase()
+        ) {
+            button.classList.add("active");
+        }
+
+    });
+
+}
+
+
+// Run when Browse.html opens
+document.addEventListener("DOMContentLoaded", function() {
+
+    loadCategoryFromURL();
+
+});
+
+
+</script>
+
+
+</body>
+
+</html>

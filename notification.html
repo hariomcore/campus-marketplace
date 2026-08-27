@@ -1,0 +1,2140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Notifications | Campus Marketplace</title>
+
+
+<style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+body {
+
+    background: #f7f8fc;
+
+    color: #111b3a;
+}
+
+
+/* =====================================================
+   NAVBAR
+===================================================== */
+
+.navbar {
+
+    height: 82px;
+
+    background: white;
+
+    border-bottom:
+        1px solid #e7e8ed;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 0 7.8%;
+
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+}
+
+
+/* =====================================================
+   LOGO
+===================================================== */
+
+.logo {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 11px;
+
+    text-decoration: none;
+
+    color: #111b3a;
+}
+
+
+.logo-icon {
+
+    width: 48px;
+
+    height: 48px;
+
+    border-radius: 11px;
+
+    background: #6338df;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.logo-icon svg {
+
+    width: 29px;
+
+    height: 29px;
+
+    fill: none;
+
+    stroke: white;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+.logo-text {
+
+    font-size: 20px;
+
+    font-weight: 700;
+
+    line-height: 1.05;
+}
+
+
+.logo-text span {
+
+    color: #6338df;
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+.nav-links {
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 38px;
+}
+
+
+.nav-links a {
+
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    position: relative;
+
+    text-decoration: none;
+
+    color: #111b3a;
+
+    font-size: 16px;
+
+    font-weight: 700;
+}
+
+
+.nav-links a:hover {
+
+    color: #6338df;
+}
+
+
+.nav-links a.active {
+
+    color: #6338df;
+}
+
+
+.nav-links a.active::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    right: 0;
+
+    bottom: 0;
+
+    height: 3px;
+
+    background: #6338df;
+}
+
+
+/* =====================================================
+   NAV RIGHT
+===================================================== */
+
+.nav-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+}
+
+
+.post-btn {
+
+    height: 48px;
+
+    padding: 0 23px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: #6338df;
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.post-btn:hover {
+
+    background: #512dc4;
+}
+
+
+/* =====================================================
+   NOTIFICATION BUTTON
+===================================================== */
+
+.notification-btn {
+
+    width: 40px;
+
+    height: 40px;
+
+    border: none;
+
+    background: #f4f3fa;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+    cursor: pointer;
+}
+
+
+.notification-btn svg {
+
+    width: 22px;
+
+    height: 22px;
+
+    fill: none;
+
+    stroke: #111b3a;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+.notification-badge {
+
+    position: absolute;
+
+    top: -2px;
+
+    right: -2px;
+
+    min-width: 18px;
+
+    height: 18px;
+
+    padding: 0 4px;
+
+    background: #6338df;
+
+    color: white;
+
+    border-radius: 20px;
+
+    font-size: 10px;
+
+    font-weight: 700;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+.login-btn {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    text-decoration: none;
+
+    color: #111b3a;
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+.profile-icon {
+
+    width: 39px;
+
+    height: 39px;
+
+    border-radius: 50%;
+
+    background: #f0f1f5;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.profile-icon svg {
+
+    width: 18px;
+
+    height: 18px;
+
+    fill: none;
+
+    stroke: #596174;
+
+    stroke-width: 1.6;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.page {
+
+    width: 84%;
+
+    max-width: 1000px;
+
+    margin: 40px auto 70px;
+}
+
+
+/* =====================================================
+   PAGE HEADER
+===================================================== */
+
+.page-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 25px;
+}
+
+
+.page-title {
+
+    font-size: 34px;
+
+    letter-spacing: -0.5px;
+
+    margin-bottom: 7px;
+}
+
+
+.page-subtitle {
+
+    color: #6b7488;
+
+    font-size: 14px;
+}
+
+
+/* =====================================================
+   MARK ALL
+===================================================== */
+
+.mark-all-btn {
+
+    border: none;
+
+    background: transparent;
+
+    color: #6338df;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.mark-all-btn:hover {
+
+    text-decoration: underline;
+}
+
+
+/* =====================================================
+   TOOLBAR
+===================================================== */
+
+.toolbar {
+
+    background: white;
+
+    border: 1px solid #e0e2e8;
+
+    border-radius: 10px;
+
+    padding: 14px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+}
+
+
+/* SEARCH */
+
+.notification-search {
+
+    flex: 1;
+
+    height: 43px;
+
+    border: 1px solid #dfe1e7;
+
+    border-radius: 7px;
+
+    display: flex;
+
+    align-items: center;
+
+    padding: 0 12px;
+
+    gap: 9px;
+}
+
+
+.notification-search svg {
+
+    width: 17px;
+
+    height: 17px;
+
+    fill: none;
+
+    stroke: #697286;
+
+    stroke-width: 1.8;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+.notification-search input {
+
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    font-size: 13px;
+
+    color: #333b50;
+}
+
+
+/* FILTER */
+
+.filter-buttons {
+
+    display: flex;
+
+    gap: 7px;
+}
+
+
+.filter-btn {
+
+    height: 40px;
+
+    padding: 0 15px;
+
+    border: 1px solid #dfe1e7;
+
+    border-radius: 20px;
+
+    background: white;
+
+    color: #596174;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.filter-btn:hover {
+
+    border-color: #6338df;
+
+    color: #6338df;
+}
+
+
+.filter-btn.active {
+
+    background: #6338df;
+
+    border-color: #6338df;
+
+    color: white;
+}
+
+
+/* =====================================================
+   NOTIFICATION CARD
+===================================================== */
+
+.notifications-container {
+
+    background: white;
+
+    border: 1px solid #e0e2e8;
+
+    border-radius: 12px;
+
+    overflow: hidden;
+}
+
+
+.notification-item {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: 15px;
+
+    padding: 20px;
+
+    border-bottom: 1px solid #eeeeF2;
+
+    position: relative;
+
+    transition: 0.2s;
+}
+
+
+.notification-item:last-child {
+
+    border-bottom: none;
+}
+
+
+.notification-item:hover {
+
+    background: #faf9ff;
+}
+
+
+.notification-item.unread {
+
+    background: #f7f4ff;
+}
+
+
+.notification-item.unread:hover {
+
+    background: #f2eeff;
+}
+
+
+/* =====================================================
+   NOTIFICATION ICON
+===================================================== */
+
+.notification-icon {
+
+    width: 45px;
+
+    height: 45px;
+
+    flex-shrink: 0;
+
+    border-radius: 50%;
+
+    background: #eee9ff;
+
+    color: #6338df;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.notification-icon svg {
+
+    width: 21px;
+
+    height: 21px;
+
+    fill: none;
+
+    stroke: currentColor;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+/* =====================================================
+   NOTIFICATION CONTENT
+===================================================== */
+
+.notification-content {
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.notification-title {
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    color: #111b3a;
+
+    margin-bottom: 5px;
+}
+
+
+.notification-message {
+
+    color: #596174;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    margin-bottom: 7px;
+}
+
+
+.notification-time {
+
+    color: #9298a7;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   UNREAD DOT
+===================================================== */
+
+.unread-dot {
+
+    width: 8px;
+
+    height: 8px;
+
+    background: #6338df;
+
+    border-radius: 50%;
+
+    position: absolute;
+
+    top: 23px;
+
+    right: 20px;
+}
+
+
+/* =====================================================
+   DELETE BUTTON
+===================================================== */
+
+.delete-btn {
+
+    width: 32px;
+
+    height: 32px;
+
+    border: none;
+
+    background: transparent;
+
+    border-radius: 6px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    opacity: 0;
+
+    transition: 0.2s;
+}
+
+
+.notification-item:hover .delete-btn {
+
+    opacity: 1;
+}
+
+
+.delete-btn:hover {
+
+    background: #f2f2f5;
+}
+
+
+.delete-btn svg {
+
+    width: 17px;
+
+    height: 17px;
+
+    fill: none;
+
+    stroke: #737b8c;
+
+    stroke-width: 1.7;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+/* =====================================================
+   EMPTY STATE
+===================================================== */
+
+.empty-state {
+
+    text-align: center;
+
+    padding: 70px 20px;
+
+    display: none;
+}
+
+
+.empty-icon {
+
+    width: 65px;
+
+    height: 65px;
+
+    margin: 0 auto 18px;
+
+    border-radius: 50%;
+
+    background: #f0edff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.empty-icon svg {
+
+    width: 30px;
+
+    height: 30px;
+
+    fill: none;
+
+    stroke: #6338df;
+
+    stroke-width: 1.6;
+
+    stroke-linecap: round;
+
+    stroke-linejoin: round;
+}
+
+
+.empty-state h2 {
+
+    font-size: 20px;
+
+    margin-bottom: 7px;
+}
+
+
+.empty-state p {
+
+    color: #747c8d;
+
+    font-size: 13px;
+}
+
+
+/* =====================================================
+   CLEAR ALL
+===================================================== */
+
+.clear-container {
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    margin-top: 15px;
+}
+
+
+.clear-btn {
+
+    border: none;
+
+    background: transparent;
+
+    color: #d14343;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+.clear-btn:hover {
+
+    text-decoration: underline;
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast {
+
+    position: fixed;
+
+    bottom: 25px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%)
+        translateY(100px);
+
+    background: #111b3a;
+
+    color: white;
+
+    padding: 12px 18px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transition: 0.3s;
+
+    z-index: 3000;
+}
+
+
+.toast.show {
+
+    opacity: 1;
+
+    transform:
+        translateX(-50%)
+        translateY(0);
+}
+
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 1100px) {
+
+    .navbar {
+
+        padding: 0 4%;
+    }
+
+    .nav-links {
+
+        gap: 20px;
+    }
+
+    .page {
+
+        width: 92%;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .nav-links {
+
+        display: none;
+    }
+
+    .toolbar {
+
+        flex-direction: column;
+
+        align-items: stretch;
+    }
+
+    .filter-buttons {
+
+        justify-content: flex-start;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .navbar {
+
+        height: 70px;
+    }
+
+    .post-btn {
+
+        display: none;
+    }
+
+    .login-btn span {
+
+        display: none;
+    }
+
+    .page {
+
+        margin-top: 25px;
+    }
+
+    .page-header {
+
+        align-items: flex-start;
+
+        gap: 15px;
+    }
+
+    .page-title {
+
+        font-size: 28px;
+    }
+
+    .notification-item {
+
+        padding: 16px;
+    }
+
+    .notification-icon {
+
+        width: 40px;
+
+        height: 40px;
+    }
+
+    .delete-btn {
+
+        opacity: 1;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<header class="navbar">
+
+
+    <!-- LOGO -->
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+
+        <div class="logo-icon">
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M3 9.5 12 5l9 4.5-9 4.5L3 9.5Z"
+                ></path>
+
+                <path
+                    d="M6 11.2V16c3.5 2.3 8.5 2.3 12 0v-4.8"
+                ></path>
+
+                <path
+                    d="M21 10v5"
+                ></path>
+
+            </svg>
+
+        </div>
+
+
+        <div class="logo-text">
+
+            Campus<br>
+
+            <span>
+                Marketplace
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="Browse.html">
+            Browse
+        </a>
+
+        <a href="Categories.html">
+            Categories
+        </a>
+
+        <a href="how-it-works.html">
+            How It Works
+        </a>
+
+        <a href="about.html">
+            About Us
+        </a>
+
+    </nav>
+
+
+    <!-- RIGHT -->
+
+    <div class="nav-right">
+
+
+        <button
+            class="post-btn"
+            onclick="window.location.href='post-item.html'"
+        >
+            + Post an Item
+        </button>
+
+
+        <!-- NOTIFICATION BUTTON -->
+
+        <button
+            class="notification-btn"
+            onclick="window.location.href='notification.html'"
+            aria-label="Notifications"
+        >
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
+                ></path>
+
+                <path
+                    d="M10 21h4"
+                ></path>
+
+            </svg>
+
+
+            <span
+                class="notification-badge"
+                id="notificationBadge"
+            >
+                3
+            </span>
+
+        </button>
+
+
+        <!-- LOGIN -->
+
+        <a
+            href="Login.html"
+            class="login-btn"
+        >
+
+            <div class="profile-icon">
+
+                <svg viewBox="0 0 24 24">
+
+                    <circle
+                        cx="12"
+                        cy="8"
+                        r="3.5"
+                    ></circle>
+
+                    <path
+                        d="M5 21c.6-4 3-6 7-6s6.4 2 7 6"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+            <span>
+                Login
+            </span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =====================================================
+     PAGE
+===================================================== -->
+
+<main class="page">
+
+
+    <!-- PAGE HEADER -->
+
+    <div class="page-header">
+
+        <div>
+
+            <h1 class="page-title">
+                Notifications
+            </h1>
+
+            <p class="page-subtitle">
+                Stay updated with activity on your marketplace account.
+            </p>
+
+        </div>
+
+
+        <button
+            class="mark-all-btn"
+            onclick="markAllRead()"
+        >
+            Mark all as read
+        </button>
+
+    </div>
+
+
+    <!-- =================================================
+         TOOLBAR
+    ================================================== -->
+
+    <div class="toolbar">
+
+
+        <!-- SEARCH -->
+
+        <div class="notification-search">
+
+            <svg viewBox="0 0 24 24">
+
+                <circle
+                    cx="11"
+                    cy="11"
+                    r="7"
+                ></circle>
+
+                <path
+                    d="m20 20-4-4"
+                ></path>
+
+            </svg>
+
+
+            <input
+                type="text"
+                id="notificationSearch"
+                placeholder="Search notifications..."
+                oninput="filterNotifications()"
+            >
+
+        </div>
+
+
+        <!-- FILTER -->
+
+        <div class="filter-buttons">
+
+            <button
+                class="filter-btn active"
+                id="allFilter"
+                onclick="setFilter('all', this)"
+            >
+                All
+            </button>
+
+
+            <button
+                class="filter-btn"
+                id="unreadFilter"
+                onclick="setFilter('unread', this)"
+            >
+                Unread
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =================================================
+         NOTIFICATIONS
+    ================================================== -->
+
+    <div
+        class="notifications-container"
+        id="notificationsContainer"
+    >
+
+
+        <!-- NOTIFICATION 1 -->
+
+        <div
+            class="notification-item unread"
+            data-title="New Like"
+            data-message="Someone liked your Study Chair listing."
+        >
+
+            <div class="notification-icon">
+
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M20.8 8.8c0 5.2-8.8 10.2-8.8 10.2S3.2 14 3.2 8.8A4.8 4.8 0 0 1 12 6.2a4.8 4.8 0 0 1 8.8 2.6Z"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+
+            <div class="notification-content">
+
+                <div class="notification-title">
+                    New Like
+                </div>
+
+                <div class="notification-message">
+                    Someone liked your Study Chair listing.
+                </div>
+
+                <div class="notification-time">
+                    5 minutes ago
+                </div>
+
+            </div>
+
+
+            <span class="unread-dot"></span>
+
+
+            <button
+                class="delete-btn"
+                onclick="deleteNotification(this)"
+                aria-label="Delete notification"
+            >
+
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M4 7h16"
+                    ></path>
+
+                    <path
+                        d="M10 11v6"
+                    ></path>
+
+                    <path
+                        d="M14 11v6"
+                    ></path>
+
+                    <path
+                        d="M6 7l1 13h10l1-13"
+                    ></path>
+
+                    <path
+                        d="M9 7V4h6v3"
+                    ></path>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+
+        <!-- NOTIFICATION 2 -->
+
+        <div
+            class="notification-item unread"
+            data-title="New Message"
+            data-message="You received a message about your HP Pavilion Laptop."
+        >
+
+            <div class="notification-icon">
+
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M4 5h16v11H8l-4 4V5Z"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+
+            <div class="notification-content">
+
+                <div class="notification-title">
+                    New Message
+                </div>
+
+                <div class="notification-message">
+                    You received a message about your HP Pavilion Laptop.
+                </div>
+
+                <div class="notification-time">
+                    20 minutes ago
+                </div>
+
+            </div>
+
+
+            <span class="unread-dot"></span>
+
+
+            <button
+                class="delete-btn"
+                onclick="deleteNotification(this)"
+            >
+
+                <svg viewBox="0 0 24 24">
+
+                    <path d="M4 7h16"></path>
+
+                    <path d="M10 11v6"></path>
+
+                    <path d="M14 11v6"></path>
+
+                    <path d="M6 7l1 13h10l1-13"></path>
+
+                    <path d="M9 7V4h6v3"></path>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+
+        <!-- NOTIFICATION 3 -->
+
+        <div
+            class="notification-item unread"
+            data-title="Listing Approved"
+            data-message="Your Engineering Mathematics Book listing is now live."
+        >
+
+            <div class="notification-icon">
+
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M20 6 9 17l-5-5"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+
+            <div class="notification-content">
+
+                <div class="notification-title">
+                    Listing Approved
+                </div>
+
+                <div class="notification-message">
+                    Your Engineering Mathematics Book listing is now live.
+                </div>
+
+                <div class="notification-time">
+                    1 hour ago
+                </div>
+
+            </div>
+
+
+            <span class="unread-dot"></span>
+
+
+            <button
+                class="delete-btn"
+                onclick="deleteNotification(this)"
+            >
+
+                <svg viewBox="0 0 24 24">
+
+                    <path d="M4 7h16"></path>
+
+                    <path d="M10 11v6"></path>
+
+                    <path d="M14 11v6"></path>
+
+                    <path d="M6 7l1 13h10l1-13"></path>
+
+                    <path d="M9 7V4h6v3"></path>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+
+        <!-- NOTIFICATION 4 -->
+
+        <div
+            class="notification-item"
+            data-title="New Product"
+            data-message="A new electronics listing has been posted."
+        >
+
+            <div class="notification-icon">
+
+                <svg viewBox="0 0 24 24">
+
+                    <rect
+                        x="4"
+                        y="4"
+                        width="16"
+                        height="16"
+                        rx="2"
+                    ></rect>
+
+                    <path
+                        d="M8 12h8"
+                    ></path>
+
+                    <path
+                        d="M12 8v8"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+
+            <div class="notification-content">
+
+                <div class="notification-title">
+                    New Product
+                </div>
+
+                <div class="notification-message">
+                    A new electronics listing has been posted on Campus Marketplace.
+                </div>
+
+                <div class="notification-time">
+                    3 hours ago
+                </div>
+
+            </div>
+
+
+            <button
+                class="delete-btn"
+                onclick="deleteNotification(this)"
+            >
+
+                <svg viewBox="0 0 24 24">
+
+                    <path d="M4 7h16"></path>
+
+                    <path d="M10 11v6"></path>
+
+                    <path d="M14 11v6"></path>
+
+                    <path d="M6 7l1 13h10l1-13"></path>
+
+                    <path d="M9 7V4h6v3"></path>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+
+        <!-- NOTIFICATION 5 -->
+
+        <div
+            class="notification-item"
+            data-title="Welcome to Campus Marketplace"
+            data-message="Your account has been successfully created."
+        >
+
+            <div class="notification-icon">
+
+                <svg viewBox="0 0 24 24">
+
+                    <circle
+                        cx="12"
+                        cy="12"
+                        r="9"
+                    ></circle>
+
+                    <path
+                        d="M8 12l2.5 2.5L16 9"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+
+            <div class="notification-content">
+
+                <div class="notification-title">
+                    Welcome to Campus Marketplace
+                </div>
+
+                <div class="notification-message">
+                    Your account has been successfully created. Start buying and selling with your campus community.
+                </div>
+
+                <div class="notification-time">
+                    Yesterday
+                </div>
+
+            </div>
+
+
+            <button
+                class="delete-btn"
+                onclick="deleteNotification(this)"
+            >
+
+                <svg viewBox="0 0 24 24">
+
+                    <path d="M4 7h16"></path>
+
+                    <path d="M10 11v6"></path>
+
+                    <path d="M14 11v6"></path>
+
+                    <path d="M6 7l1 13h10l1-13"></path>
+
+                    <path d="M9 7V4h6v3"></path>
+
+                </svg>
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =================================================
+         EMPTY STATE
+    ================================================== -->
+
+    <div
+        class="empty-state"
+        id="emptyState"
+    >
+
+        <div class="empty-icon">
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
+                ></path>
+
+                <path
+                    d="M10 21h4"
+                ></path>
+
+            </svg>
+
+        </div>
+
+
+        <h2>
+            No notifications
+        </h2>
+
+
+        <p>
+            You're all caught up.
+        </p>
+
+    </div>
+
+
+    <!-- CLEAR -->
+
+    <div class="clear-container">
+
+        <button
+            class="clear-btn"
+            onclick="clearAllNotifications()"
+        >
+            Clear all notifications
+        </button>
+
+    </div>
+
+</main>
+
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+    class="toast"
+    id="toast"
+>
+    Notification updated
+</div>
+
+
+<!-- =====================================================
+     JAVASCRIPT
+===================================================== -->
+
+<script>
+
+
+/* =====================================================
+   CURRENT FILTER
+===================================================== */
+
+let currentFilter = "all";
+
+
+/* =====================================================
+   UPDATE BADGE
+===================================================== */
+
+function updateBadge() {
+
+    const unread =
+        document.querySelectorAll(
+            ".notification-item.unread"
+        ).length;
+
+
+    const badge =
+        document.getElementById(
+            "notificationBadge"
+        );
+
+
+    badge.textContent =
+        unread;
+
+
+    if (unread === 0) {
+
+        badge.style.display =
+            "none";
+
+    } else {
+
+        badge.style.display =
+            "flex";
+
+    }
+
+}
+
+
+/* =====================================================
+   MARK ALL READ
+===================================================== */
+
+function markAllRead() {
+
+    const notifications =
+        document.querySelectorAll(
+            ".notification-item"
+        );
+
+
+    notifications.forEach(
+        function(notification) {
+
+            notification.classList.remove(
+                "unread"
+            );
+
+
+            const dot =
+                notification.querySelector(
+                    ".unread-dot"
+                );
+
+
+            if (dot) {
+
+                dot.remove();
+
+            }
+
+        }
+    );
+
+
+    updateBadge();
+
+    showToast(
+        "All notifications marked as read"
+    );
+
+
+    filterNotifications();
+
+}
+
+
+/* =====================================================
+   DELETE NOTIFICATION
+===================================================== */
+
+function deleteNotification(button) {
+
+    const notification =
+        button.closest(
+            ".notification-item"
+        );
+
+
+    if (!notification) {
+        return;
+    }
+
+
+    notification.remove();
+
+
+    updateBadge();
+
+    filterNotifications();
+
+    showToast(
+        "Notification deleted"
+    );
+
+}
+
+
+/* =====================================================
+   CLEAR ALL
+===================================================== */
+
+function clearAllNotifications() {
+
+    const notifications =
+        document.querySelectorAll(
+            ".notification-item"
+        );
+
+
+    if (
+        notifications.length === 0
+    ) {
+
+        showToast(
+            "No notifications to clear"
+        );
+
+        return;
+
+    }
+
+
+    if (
+        !confirm(
+            "Clear all notifications?"
+        )
+    ) {
+
+        return;
+
+    }
+
+
+    notifications.forEach(
+        function(notification) {
+
+            notification.remove();
+
+        }
+    );
+
+
+    updateBadge();
+
+    filterNotifications();
+
+    showToast(
+        "All notifications cleared"
+    );
+
+}
+
+
+/* =====================================================
+   FILTER BUTTON
+===================================================== */
+
+function setFilter(
+    filter,
+    button
+) {
+
+    currentFilter =
+        filter;
+
+
+    document
+        .querySelectorAll(
+            ".filter-btn"
+        )
+        .forEach(
+            function(btn) {
+
+                btn.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+    button.classList.add(
+        "active"
+    );
+
+
+    filterNotifications();
+
+}
+
+
+/* =====================================================
+   SEARCH + FILTER
+===================================================== */
+
+function filterNotifications() {
+
+    const search =
+        document
+            .getElementById(
+                "notificationSearch"
+            )
+            .value
+            .toLowerCase()
+            .trim();
+
+
+    const notifications =
+        document.querySelectorAll(
+            ".notification-item"
+        );
+
+
+    let visible =
+        0;
+
+
+    notifications.forEach(
+        function(notification) {
+
+            const title =
+                (
+                    notification.dataset.title ||
+                    ""
+                ).toLowerCase();
+
+
+            const message =
+                (
+                    notification.dataset.message ||
+                    ""
+                ).toLowerCase();
+
+
+            const matchesSearch =
+                title.includes(search) ||
+                message.includes(search);
+
+
+            const matchesFilter =
+                currentFilter === "all" ||
+                notification.classList.contains(
+                    "unread"
+                );
+
+
+            if (
+                matchesSearch &&
+                matchesFilter
+            ) {
+
+                notification.style.display =
+                    "flex";
+
+                visible++;
+
+            } else {
+
+                notification.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+
+    const emptyState =
+        document.getElementById(
+            "emptyState"
+        );
+
+
+    const container =
+        document.getElementById(
+            "notificationsContainer"
+        );
+
+
+    if (visible === 0) {
+
+        container.style.display =
+            "none";
+
+        emptyState.style.display =
+            "block";
+
+    } else {
+
+        container.style.display =
+            "block";
+
+        emptyState.style.display =
+            "none";
+
+    }
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+let toastTimer;
+
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            function() {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            2500
+        );
+
+}
+
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+updateBadge();
+
+filterNotifications();
+
+
+</script>
+
+
+</body>
+
+</html>

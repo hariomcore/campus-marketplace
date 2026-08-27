@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | Campus Marketplace</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #f5f2ff, #ffffff);
+            color: #101b3a;
+        }
+
+        /* ================= HOME BUTTON ================= */
+
+        .home-btn {
+            position: fixed;
+            top: 25px;
+            left: 30px;
+
+            display: flex;
+            align-items: center;
+            gap: 8px;
+
+            padding: 10px 17px;
+
+            background: white;
+            color: #5730d8;
+
+            border: 1px solid #e2ddf7;
+            border-radius: 8px;
+
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+
+            transition: 0.2s;
+        }
+
+        .home-btn:hover {
+            background: #6437df;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+
+        /* ================= PAGE ================= */
+
+        .page {
+            min-height: 100vh;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 40px 20px;
+        }
+
+
+        /* ================= LOGIN CONTAINER ================= */
+
+        .login-container {
+            width: 100%;
+            max-width: 1050px;
+            min-height: 610px;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            background: white;
+
+            border-radius: 22px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 20px 60px rgba(55, 35, 120, 0.13);
+        }
+
+
+        /* ================= LEFT SIDE ================= */
+
+        .left-side {
+            position: relative;
+
+            padding: 55px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(74, 40, 170, 0.95),
+                    rgba(104, 56, 224, 0.92)
+                ),
+                url("https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=1000&q=80");
+
+            background-size: cover;
+            background-position: center;
+
+            color: white;
+        }
+
+        .left-side::before {
+            content: "";
+
+            position: absolute;
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at 20% 20%,
+                    rgba(255,255,255,0.15),
+                    transparent 30%
+                );
+        }
+
+        .left-content {
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* ================= LOGO ================= */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            margin-bottom: 60px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            background: rgba(255,255,255,0.18);
+
+            border: 1px solid rgba(255,255,255,0.25);
+
+            border-radius: 12px;
+
+            font-size: 26px;
+        }
+
+        .logo-text {
+            font-size: 21px;
+            font-weight: bold;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            color: #ded3ff;
+        }
+
+
+        /* ================= LEFT CONTENT ================= */
+
+        .left-side h1 {
+            font-size: 43px;
+            line-height: 1.15;
+
+            margin-bottom: 20px;
+
+            letter-spacing: -1px;
+        }
+
+        .left-side p {
+            max-width: 400px;
+
+            color: #eee9ff;
+
+            font-size: 16px;
+            line-height: 1.7;
+
+            margin-bottom: 35px;
+        }
+
+
+        /* ================= FEATURES ================= */
+
+        .benefits {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+
+            font-size: 14px;
+            color: #f4f1ff;
+        }
+
+        .benefit-icon {
+            width: 32px;
+            height: 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: rgba(255,255,255,0.15);
+
+            font-size: 15px;
+        }
+
+
+        /* ================= RIGHT SIDE ================= */
+
+        .right-side {
+            padding: 55px 65px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .login-heading {
+            margin-bottom: 32px;
+        }
+
+        .login-heading h2 {
+            font-size: 31px;
+            margin-bottom: 9px;
+        }
+
+        .login-heading p {
+            color: #6c7488;
+            font-size: 14px;
+        }
+
+
+        /* ================= FORM ================= */
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            margin-bottom: 8px;
+        }
+
+        .input-container {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+
+            left: 15px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #7b8294;
+
+            font-size: 17px;
+        }
+
+        .form-input {
+            width: 100%;
+            height: 51px;
+
+            padding: 0 45px;
+
+            border: 1px solid #dfe2e9;
+            border-radius: 8px;
+
+            outline: none;
+
+            font-size: 14px;
+
+            color: #17213d;
+
+            transition: 0.2s;
+        }
+
+        .form-input:focus {
+            border-color: #6739df;
+
+            box-shadow:
+                0 0 0 3px rgba(103, 57, 223, 0.10);
+        }
+
+        .password-toggle {
+            position: absolute;
+
+            right: 15px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            border: none;
+            background: transparent;
+
+            color: #6c7488;
+
+            cursor: pointer;
+
+            font-size: 16px;
+        }
+
+
+        /* ================= OPTIONS ================= */
+
+        .form-options {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin: 5px 0 25px;
+
+            font-size: 13px;
+        }
+
+        .remember {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            color: #596176;
+        }
+
+        .remember input {
+            accent-color: #6337df;
+        }
+
+        .forgot {
+            color: #6337df;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+        .forgot:hover {
+            text-decoration: underline;
+        }
+
+
+        /* ================= LOGIN BUTTON ================= */
+
+        .login-btn {
+            width: 100%;
+            height: 52px;
+
+            border: none;
+            border-radius: 8px;
+
+            background: linear-gradient(
+                135deg,
+                #6337df,
+                #7448e8
+            );
+
+            color: white;
+
+            font-size: 15px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 7px 18px rgba(99, 55, 223, 0.25);
+
+            transition: 0.2s;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+
+            box-shadow:
+                0 10px 22px rgba(99, 55, 223, 0.32);
+        }
+
+
+        /* ================= DIVIDER ================= */
+
+        .divider {
+            display: flex;
+            align-items: center;
+
+            gap: 13px;
+
+            margin: 25px 0;
+
+            color: #a0a6b4;
+
+            font-size: 12px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: "";
+
+            flex: 1;
+
+            height: 1px;
+
+            background: #e5e7ec;
+        }
+
+
+        /* ================= REGISTER ================= */
+
+        .register {
+            text-align: center;
+
+            font-size: 14px;
+
+            color: #697185;
+        }
+
+        .register a {
+            color: #6337df;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+        .register a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* ================= SECURITY ================= */
+
+        .security {
+            margin-top: 30px;
+
+            padding: 12px 14px;
+
+            background: #f7f5ff;
+
+            border-radius: 8px;
+
+            color: #5b6275;
+
+            font-size: 12px;
+
+            display: flex;
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        /* ================= RESPONSIVE ================= */
+
+        @media (max-width: 850px) {
+
+            .login-container {
+                grid-template-columns: 1fr;
+
+                max-width: 520px;
+            }
+
+            .left-side {
+                display: none;
+            }
+
+            .right-side {
+                padding: 50px 45px;
+            }
+
+        }
+
+
+        @media (max-width: 500px) {
+
+            .home-btn {
+                top: 15px;
+                left: 15px;
+            }
+
+            .page {
+                padding: 75px 15px 25px;
+            }
+
+            .login-container {
+                border-radius: 15px;
+            }
+
+            .right-side {
+                padding: 40px 25px;
+            }
+
+            .login-heading h2 {
+                font-size: 27px;
+            }
+
+            .form-options {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+                }
+            </style>
+            
+        </head>
+
+    <body>
+
+
+    <!-- ================= HOME BUTTON ================= -->
+
+    <a href="index.html" class="home-btn">
+        ← Home
+    </a>
+
+
+    <!-- ================= LOGIN PAGE ================= -->
+
+    <main class="page">
+
+        <div class="login-container">
+
+
+            <!-- ================= LEFT ================= -->
+
+            <section class="left-side">
+
+                <div class="left-content">
+
+                    <div class="logo">
+
+                        <div class="logo-icon">
+                            🎓
+                        </div>
+
+                        <div class="logo-text">
+                            Campus<br>
+                            <span>Marketplace</span>
+                        </div>
+
+                    </div>
+
+
+                    <h1>
+                        Welcome<br>
+                        Back!
+                    </h1>
+
+                    <p>
+                        Sign in to your Campus Marketplace
+                        account and discover great deals
+                        from students around your campus.
+                    </p>
+
+
+                    <div class="benefits">
+
+                        <div class="benefit">
+
+                            <div class="benefit-icon">
+                                ✓
+                            </div>
+
+                            Verified student community
+
+                        </div>
+
+
+                        <div class="benefit">
+
+                            <div class="benefit-icon">
+                                🛡
+                            </div>
+
+                            Safe and secure marketplace
+
+                        </div>
+
+
+                        <div class="benefit">
+
+                            <div class="benefit-icon">
+                                ⚡
+                            </div>
+
+                            Quick and easy transactions
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= RIGHT ================= -->
+
+            <section class="right-side">
+
+
+                <div class="login-heading">
+
+                    <h2>
+                        Sign in
+                    </h2>
+
+                    <p>
+                        Enter your details to access your account.
+                    </p>
+
+                </div>
+
+
+                <!-- LOGIN FORM -->
+
+                <form id="loginForm">
+
+
+                    <!-- EMAIL -->
+
+                    <div class="form-group">
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <div class="input-container">
+
+                            <span class="input-icon">
+                                ✉
+                            </span>
+
+                            <input
+                                type="email"
+                                id="email"
+                                class="form-input"
+                                placeholder="Enter your email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="form-group">
+                        <label for="password">
+                            Password
+                        </label>
+
+                    <div class="input-container">
+
+                    <!-- Lock Icon -->
+
+                    <span class="input-icon">🔒</span>
+
+                    <!-- Password Input -->
+
+                    <input
+                        type="password"
+                        id="password"
+                        class="form-input"
+                        placeholder="Enter your password"
+                        required
+                    >
+
+                    <!-- Show / Hide Password -->
+                    
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        id="passwordToggle"
+                        onclick="togglePassword()"
+                        aria-label="Show password"
+                    >
+
+                    <svg
+                        id="eyeIcon"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="22"
+                        height="22"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+
+                    <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                </button>
+
+                </div>
+            </div>
+
+
+
+                    <!-- OPTIONS -->
+
+                    <div class="form-options">
+
+                        <label class="remember">
+
+                            <input
+                                type="checkbox"
+                                id="remember"
+                            >
+
+                            Remember me
+
+                        </label>
+
+
+                        <a
+                            href="#"
+                            class="forgot"
+                            onclick="forgotPassword()"
+                        >
+                            Forgot password?
+                        </a>
+
+                    </div>
+
+
+                    <!-- LOGIN -->
+
+                    <button
+                        type="submit"
+                        class="login-btn"
+                    >
+                        Sign In
+                    </button>
+
+                </form>
+
+
+                <!-- DIVIDER -->
+
+                <div class="divider">
+                    OR
+                </div>
+
+
+                <!-- REGISTER -->
+
+                <div class="register">
+
+                    Don't have an account?
+
+                    <a href="register.html">
+                        Create an account
+                    </a>
+
+                </div>
+
+
+                <!-- SECURITY -->
+
+                <div class="security">
+
+                    🛡️
+
+                    <span>
+                        Your account information is protected
+                        with secure authentication.
+                    </span>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        /* Password visibility */
+
+        function togglePassword() {
+            const password = document.getElementById("password");
+
+            if (password.type === "password") {
+            password.type = "text";
+            } 
+            else {
+            password.type = "password";
+        }
+}
+
+        /* Forgot password */
+
+        function forgotPassword() {
+
+            alert(
+                "Password reset functionality will be connected to the backend."
+            );
+
+        }
+
+
+        /* Login */
+
+        document
+            .getElementById("loginForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const email =
+                    document.getElementById("email").value;
+
+                const password =
+                    document.getElementById("password").value;
+
+
+                if (!email || !password) {
+
+                    alert(
+                        "Please enter your email and password."
+                    );
+
+                    return;
+
+                }
+
+
+                /*
+                    Later connect this to:
+
+                    POST
+                    http://localhost:5000/api/auth/login
+                */
+
+                console.log("Email:", email);
+                console.log("Password:", password);
+
+                alert(
+                    "Login form submitted successfully!"
+                );
+
+            });
+
+    </script>
+
+</body>
+</html>

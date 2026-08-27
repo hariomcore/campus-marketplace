@@ -1,0 +1,1646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        How It Works | Campus Marketplace
+    </title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        body {
+            background: #f8f9fc;
+            color: #101b3a;
+        }
+
+
+        button {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+
+            height: 82px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7.8%;
+
+            background: white;
+
+            border-bottom: 1px solid #eeeeee;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+
+            display: flex;
+            align-items: center;
+
+            gap: 11px;
+
+            text-decoration: none;
+
+            color: #101b3a;
+        }
+
+
+        .logo-icon {
+
+            width: 47px;
+            height: 47px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: #6538df;
+
+            font-size: 25px;
+        }
+
+
+        .logo-text {
+
+            font-size: 21px;
+
+            line-height: 1.05;
+
+            font-weight: 700;
+        }
+
+
+        .logo-text span {
+
+            color: #6338df;
+        }
+
+
+        /* =====================================================
+           NAV LINKS
+        ===================================================== */
+
+        .nav-links {
+
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+
+            gap: 39px;
+        }
+
+
+        .nav-links a {
+
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+
+            color: #101b3a;
+
+            text-decoration: none;
+
+            font-size: 16px;
+
+            font-weight: 700;
+        }
+
+
+        .nav-links a:hover {
+
+            color: #6338df;
+        }
+
+
+        .nav-links a.active {
+
+            color: #6338df;
+        }
+
+
+        .nav-links a.active::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+
+            bottom: 0;
+
+            height: 3px;
+
+            background: #6338df;
+        }
+
+
+        /* =====================================================
+           NAV RIGHT
+        ===================================================== */
+
+        .nav-right {
+
+            display: flex;
+            align-items: center;
+
+            gap: 25px;
+        }
+
+
+        .post-btn {
+
+            border: none;
+
+            padding: 14px 24px;
+
+            border-radius: 7px;
+
+            background: #6338df;
+
+            color: white;
+
+            font-size: 15px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .post-btn:hover {
+
+            background: #5028c7;
+
+            transform: translateY(-1px);
+        }
+
+
+        .notification-btn {
+
+            border: none;
+
+            background: transparent;
+
+            color: #101b3a;
+
+            font-size: 23px;
+
+            cursor: pointer;
+        }
+
+
+        .notification-btn:hover {
+
+            color: #6338df;
+        }
+
+
+        .login-btn {
+
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            text-decoration: none;
+
+            color: #101b3a;
+
+            font-size: 16px;
+
+            font-weight: 700;
+        }
+
+
+        .profile-icon {
+
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #f1f2f6;
+
+            font-size: 18px;
+        }
+
+
+        /* =====================================================
+           HERO
+        ===================================================== */
+
+        .hero {
+
+            background: white;
+
+            text-align: center;
+
+            padding: 65px 20px 60px;
+
+            border-bottom: 1px solid #eeeeee;
+        }
+
+
+        .hero-badge {
+
+            display: inline-block;
+
+            padding: 8px 15px;
+
+            margin-bottom: 18px;
+
+            border-radius: 20px;
+
+            background: #f1edff;
+
+            color: #6338df;
+
+            font-size: 13px;
+
+            font-weight: 700;
+        }
+
+
+        .hero h1 {
+
+            max-width: 760px;
+
+            margin: 0 auto 17px;
+
+            font-size: 42px;
+
+            line-height: 1.15;
+
+            letter-spacing: -0.7px;
+        }
+
+
+        .hero h1 span {
+
+            color: #6338df;
+        }
+
+
+        .hero p {
+
+            max-width: 650px;
+
+            margin: auto;
+
+            color: #687187;
+
+            font-size: 16px;
+
+            line-height: 1.7;
+        }
+
+
+        /* =====================================================
+           MAIN
+        ===================================================== */
+
+        .container {
+
+            width: 84%;
+
+            max-width: 1200px;
+
+            margin: 48px auto 60px;
+        }
+
+
+        /* =====================================================
+           SECTION HEADING
+        ===================================================== */
+
+        .section-heading {
+
+            text-align: center;
+
+            margin-bottom: 35px;
+        }
+
+
+        .section-heading h2 {
+
+            font-size: 27px;
+
+            margin-bottom: 9px;
+        }
+
+
+        .section-heading p {
+
+            color: #687187;
+
+            font-size: 14px;
+        }
+
+
+        /* =====================================================
+           STEPS
+        ===================================================== */
+
+        .steps {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 20px;
+
+            position: relative;
+        }
+
+
+        /* CONNECTING LINE */
+
+        .steps::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 38px;
+
+            left: 11%;
+
+            right: 11%;
+
+            height: 2px;
+
+            background: #ded7f8;
+
+            z-index: 0;
+        }
+
+
+        /* STEP CARD */
+
+        .step {
+
+            position: relative;
+
+            z-index: 1;
+
+            background: white;
+
+            border: 1px solid #e0e3e9;
+
+            border-radius: 13px;
+
+            padding: 27px 20px 25px;
+
+            text-align: center;
+
+            transition: 0.25s;
+        }
+
+
+        .step:hover {
+
+            transform: translateY(-5px);
+
+            box-shadow:
+                0 12px 28px rgba(54, 39, 110, 0.10);
+
+            border-color: #d9cff8;
+        }
+
+
+        .step-number {
+
+            width: 76px;
+            height: 76px;
+
+            margin: 0 auto 21px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #6338df;
+
+            border: 8px solid #f1edff;
+
+            color: white;
+
+            font-size: 24px;
+
+            font-weight: 700;
+        }
+
+
+        .step-icon {
+
+            font-size: 30px;
+
+            margin-bottom: 14px;
+        }
+
+
+        .step h3 {
+
+            font-size: 17px;
+
+            margin-bottom: 9px;
+        }
+
+
+        .step p {
+
+            color: #687187;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           BUY / SELL SECTION
+        ===================================================== */
+
+        .two-column {
+
+            margin-top: 55px;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 22px;
+        }
+
+
+        .info-card {
+
+            background: white;
+
+            border: 1px solid #e0e3e9;
+
+            border-radius: 13px;
+
+            padding: 30px;
+
+            transition: 0.25s;
+        }
+
+
+        .info-card:hover {
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 10px 25px rgba(0,0,0,0.07);
+        }
+
+
+        .info-card-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            margin-bottom: 22px;
+        }
+
+
+        .info-card-icon {
+
+            width: 52px;
+            height: 52px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 11px;
+
+            background: #f1edff;
+
+            font-size: 26px;
+        }
+
+
+        .info-card h3 {
+
+            font-size: 20px;
+        }
+
+
+        .info-list {
+
+            list-style: none;
+        }
+
+
+        .info-list li {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 11px;
+
+            margin-bottom: 14px;
+
+            color: #566078;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        .check {
+
+            flex-shrink: 0;
+
+            width: 21px;
+            height: 21px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #e8f7ef;
+
+            color: #078143;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           SAFETY SECTION
+        ===================================================== */
+
+        .safety {
+
+            margin-top: 35px;
+
+            padding: 32px;
+
+            border-radius: 13px;
+
+            background: #f2edff;
+
+            display: grid;
+
+            grid-template-columns:
+                90px 1fr;
+
+            align-items: center;
+
+            gap: 20px;
+        }
+
+
+        .safety-icon {
+
+            width: 70px;
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: white;
+
+            font-size: 34px;
+        }
+
+
+        .safety h2 {
+
+            font-size: 21px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .safety p {
+
+            color: #5e677c;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           CTA
+        ===================================================== */
+
+        .cta {
+
+            margin-top: 45px;
+
+            padding: 48px 30px;
+
+            border-radius: 14px;
+
+            background: #6338df;
+
+            text-align: center;
+
+            color: white;
+        }
+
+
+        .cta h2 {
+
+            font-size: 28px;
+
+            margin-bottom: 10px;
+        }
+
+
+        .cta p {
+
+            color: #e8e2ff;
+
+            font-size: 14px;
+
+            margin-bottom: 23px;
+        }
+
+
+        .cta-buttons {
+
+            display: flex;
+
+            justify-content: center;
+
+            gap: 12px;
+        }
+
+
+        .cta-primary {
+
+            padding: 13px 23px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: white;
+
+            color: #6338df;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .cta-secondary {
+
+            padding: 13px 23px;
+
+            border: 1px solid rgba(255,255,255,0.6);
+
+            border-radius: 7px;
+
+            background: transparent;
+
+            color: white;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .cta-primary:hover {
+
+            background: #f5f2ff;
+        }
+
+
+        .cta-secondary:hover {
+
+            background: rgba(255,255,255,0.1);
+        }
+
+
+        /* =====================================================
+           NOTIFICATION
+        ===================================================== */
+
+        .notification-popup {
+
+            position: fixed;
+
+            top: 92px;
+
+            right: 8%;
+
+            width: 300px;
+
+            padding: 18px;
+
+            background: white;
+
+            border: 1px solid #e3e3e3;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 12px 35px rgba(0,0,0,0.15);
+
+            display: none;
+
+            z-index: 2000;
+        }
+
+
+        .notification-popup.show {
+
+            display: block;
+        }
+
+
+        .notification-popup h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .notification-popup p {
+
+            color: #6a7285;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .navbar {
+
+                padding: 0 4%;
+            }
+
+
+            .nav-links {
+
+                gap: 20px;
+            }
+
+
+            .container {
+
+                width: 90%;
+            }
+
+
+            .steps {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .steps::before {
+
+                display: none;
+            }
+
+        }
+
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+
+                display: none;
+            }
+
+
+            .hero h1 {
+
+                font-size: 35px;
+            }
+
+
+            .two-column {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .safety {
+
+                grid-template-columns: 1fr;
+
+                text-align: center;
+            }
+
+
+            .safety-icon {
+
+                margin: auto;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                height: 70px;
+            }
+
+
+            .notification-btn {
+
+                display: none;
+            }
+
+
+            .post-btn {
+
+                padding: 11px 13px;
+            }
+
+
+            .login-btn span {
+
+                display: none;
+            }
+
+
+            .hero {
+
+                padding: 45px 20px;
+            }
+
+
+            .hero h1 {
+
+                font-size: 30px;
+            }
+
+
+            .container {
+
+                width: 90%;
+
+                margin-top: 35px;
+            }
+
+
+            .steps {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .cta-buttons {
+
+                flex-direction: column;
+            }
+
+
+            .cta-primary,
+            .cta-secondary {
+
+                width: 100%;
+            }
+
+        }
+
+
+        @media (max-width: 400px) {
+
+            .post-btn {
+
+                display: none;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar">
+
+
+    <!-- LOGO -->
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+
+        <div class="logo-icon">
+            🎓
+        </div>
+
+
+        <div class="logo-text">
+
+            Campus<br>
+
+            <span>
+                Marketplace
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+
+        <a href="Browse.html">
+            Browse
+        </a>
+
+
+        <a href="categories.html">
+            Categories
+        </a>
+
+
+        <a
+            href="how-it-works.html"
+            class="active"
+        >
+            How It Works
+        </a>
+
+
+        <a href="about.html">
+            About Us
+        </a>
+
+    </nav>
+
+
+    <!-- RIGHT -->
+
+    <div class="nav-right">
+
+
+        <button
+            class="post-btn"
+            onclick="goToPostItem()"
+        >
+            ＋ Post an Item
+        </button>
+
+
+        <button
+            class="notification-btn"
+            onclick="toggleNotifications()"
+        >
+            ♧
+        </button>
+
+
+        <a
+            href="login.html"
+            class="login-btn"
+        >
+
+            <div class="profile-icon">
+                ♙
+            </div>
+
+
+            <span>
+                Login
+            </span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     NOTIFICATION
+========================================================= -->
+
+<div
+    class="notification-popup"
+    id="notificationPopup"
+>
+
+    <h3>
+        Notifications
+    </h3>
+
+
+    <p>
+        You currently have no new notifications.
+    </p>
+
+</div>
+
+
+<!-- =========================================================
+     HERO
+========================================================= -->
+
+<section class="hero">
+
+
+    <div class="hero-badge">
+        Simple • Fast • Student Friendly
+    </div>
+
+
+    <h1>
+
+        How Campus Marketplace
+        <span>
+            Works
+        </span>
+
+    </h1>
+
+
+    <p>
+
+        Buy and sell items within your college
+        community in just a few simple steps.
+
+    </p>
+
+</section>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="container">
+
+
+    <!-- =====================================================
+         STEPS
+    ====================================================== -->
+
+    <div class="section-heading">
+
+        <h2>
+            Get Started in 4 Easy Steps
+        </h2>
+
+
+        <p>
+            Everything you need to buy or sell on campus.
+        </p>
+
+    </div>
+
+
+    <section class="steps">
+
+
+        <!-- STEP 1 -->
+
+        <div class="step">
+
+            <div class="step-number">
+                1
+            </div>
+
+
+            <div class="step-icon">
+                🔎
+            </div>
+
+
+            <h3>
+                Browse
+            </h3>
+
+
+            <p>
+                Explore books, electronics,
+                furniture, clothing and other
+                products listed by students.
+            </p>
+
+        </div>
+
+
+        <!-- STEP 2 -->
+
+        <div class="step">
+
+            <div class="step-number">
+                2
+            </div>
+
+
+            <div class="step-icon">
+                ❤️
+            </div>
+
+
+            <h3>
+                Choose
+            </h3>
+
+
+            <p>
+                Find an item you like and
+                check its price, condition,
+                category and location.
+            </p>
+
+        </div>
+
+
+        <!-- STEP 3 -->
+
+        <div class="step">
+
+            <div class="step-number">
+                3
+            </div>
+
+
+            <div class="step-icon">
+                💬
+            </div>
+
+
+            <h3>
+                Connect
+            </h3>
+
+
+            <p>
+                Contact the seller and
+                arrange a convenient place
+                and time to meet.
+            </p>
+
+        </div>
+
+
+        <!-- STEP 4 -->
+
+        <div class="step">
+
+            <div class="step-number">
+                4
+            </div>
+
+
+            <div class="step-icon">
+                🤝
+            </div>
+
+
+            <h3>
+                Buy or Sell
+            </h3>
+
+
+            <p>
+                Complete the transaction
+                safely and enjoy a simple
+                campus marketplace experience.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         BUY / SELL
+    ====================================================== -->
+
+    <section class="two-column">
+
+
+        <!-- BUY -->
+
+        <div class="info-card">
+
+
+            <div class="info-card-header">
+
+                <div class="info-card-icon">
+                    🛒
+                </div>
+
+
+                <h3>
+                    Buying an Item
+                </h3>
+
+            </div>
+
+
+            <ul class="info-list">
+
+
+                <li>
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Browse available listings.
+
+                </li>
+
+
+                <li>
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Use categories and search
+                    to find what you need.
+
+                </li>
+
+
+                <li>
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Check the item's condition,
+                    price and location.
+
+                </li>
+
+
+                <li>
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Contact the seller.
+
+                </li>
+
+
+                <li>
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Meet on campus and
+                    complete the purchase.
+
+                </li>
+
+            </ul>
+
+        </div>
+
+
+        <!-- SELL -->
+
+        <div class="info-card">
+
+
+            <div class="info-card-header">
+
+                <div class="info-card-icon">
+                    📦
+                </div>
+
+
+                <h3>
+                    Selling an Item
+                </h3>
+
+            </div>
+
+
+            <ul class="info-list">
+
+
+                <li>
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Click "Post an Item".
+
+                </li>
+
+
+                <li>
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Add the product name,
+                    price and category.
+
+                </li>
+
+
+                <li>
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Upload clear product
+                    photos.
+
+                </li>
+
+
+                <li>
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Add your campus location
+                    and item condition.
+
+                </li>
+
+
+                <li>
+
+                    <span class="check">
+                        ✓
+                    </span>
+
+                    Publish your listing and
+                    connect with buyers.
+
+                </li>
+
+            </ul>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SAFETY
+    ====================================================== -->
+
+    <section class="safety">
+
+
+        <div class="safety-icon">
+            🛡️
+        </div>
+
+
+        <div>
+
+            <h2>
+                Stay Safe While Trading
+            </h2>
+
+
+            <p>
+
+                Meet in public campus locations,
+                verify the item before making a
+                payment, and never share your
+                password or sensitive account
+                information with anyone.
+
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CTA
+    ====================================================== -->
+
+    <section class="cta">
+
+
+        <h2>
+            Ready to Get Started?
+        </h2>
+
+
+        <p>
+            Find something useful or sell
+            something you no longer need.
+        </p>
+
+
+        <div class="cta-buttons">
+
+
+            <button
+                class="cta-primary"
+                onclick="goToBrowse()"
+            >
+                Browse Listings
+            </button>
+
+
+            <button
+                class="cta-secondary"
+                onclick="goToPostItem()"
+            >
+                ＋ Post an Item
+            </button>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+    /* =====================================================
+       POST ITEM
+    ===================================================== */
+
+    function goToPostItem() {
+
+        window.location.href =
+            "post-item.html";
+
+    }
+
+
+    /* =====================================================
+       BROWSE
+    ===================================================== */
+
+    function goToBrowse() {
+
+        window.location.href =
+            "Browse.html";
+
+    }
+
+
+    /* =====================================================
+       NOTIFICATIONS
+    ===================================================== */
+
+    function toggleNotifications() {
+
+        document
+            .getElementById(
+                "notificationPopup"
+            )
+            .classList.toggle("show");
+
+    }
+
+
+    /* =====================================================
+       CLOSE NOTIFICATION
+    ===================================================== */
+
+    document.addEventListener(
+        "click",
+        function(event) {
+
+            const popup =
+                document.getElementById(
+                    "notificationPopup"
+                );
+
+
+            const button =
+                document.querySelector(
+                    ".notification-btn"
+                );
+
+
+            if (
+                !popup.contains(event.target) &&
+                !button.contains(event.target)
+            ) {
+
+                popup.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>

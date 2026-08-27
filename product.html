@@ -1,0 +1,2621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Product | Campus Marketplace</title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        body {
+            background: #f7f8fc;
+            color: #111b3a;
+        }
+
+
+        button,
+        input,
+        textarea {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+
+            height: 82px;
+
+            padding: 0 7.8%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background: white;
+
+            border-bottom: 1px solid #eeeeee;
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 1000;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+
+            text-decoration: none;
+
+            color: #111b3a;
+        }
+
+
+        .logo-icon {
+
+            width: 47px;
+
+            height: 47px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: #6338df;
+
+            border-radius: 10px;
+        }
+
+
+        .logo-icon svg {
+
+            width: 27px;
+
+            height: 27px;
+
+            fill: none;
+
+            stroke: white;
+
+            stroke-width: 1.7;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+        }
+
+
+        .logo-text {
+
+            font-size: 20px;
+
+            line-height: 1.05;
+
+            font-weight: 700;
+        }
+
+
+        .logo-text span {
+
+            color: #6338df;
+        }
+
+
+        /* =====================================================
+           NAVIGATION
+        ===================================================== */
+
+        .nav-links {
+
+            height: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 38px;
+        }
+
+
+        .nav-links a {
+
+            height: 100%;
+
+            display: flex;
+
+            align-items: center;
+
+            color: #111b3a;
+
+            text-decoration: none;
+
+            font-size: 16px;
+
+            font-weight: 700;
+
+            position: relative;
+        }
+
+
+        .nav-links a:hover {
+
+            color: #6338df;
+        }
+
+
+        .nav-links a.active {
+
+            color: #6338df;
+        }
+
+
+        .nav-links a.active::after {
+
+            content: "";
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: 0;
+
+            right: 0;
+
+            height: 3px;
+
+            background: #6338df;
+        }
+
+
+        /* =====================================================
+           NAV RIGHT
+        ===================================================== */
+
+        .nav-right {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 23px;
+        }
+
+
+        .post-btn {
+
+            height: 47px;
+
+            padding: 0 22px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #6338df;
+
+            color: white;
+
+            font-size: 14px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .post-btn:hover {
+
+            background: #512fc6;
+
+            transform: translateY(-1px);
+        }
+
+
+        .notification-btn {
+
+            border: none;
+
+            background: transparent;
+
+            cursor: pointer;
+        }
+
+
+        .notification-btn svg {
+
+            width: 23px;
+
+            height: 23px;
+
+            fill: none;
+
+            stroke: #111b3a;
+
+            stroke-width: 1.6;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+        }
+
+
+        .notification-btn:hover svg {
+
+            stroke: #6338df;
+        }
+
+
+        .login-btn {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            text-decoration: none;
+
+            color: #111b3a;
+
+            font-size: 15px;
+
+            font-weight: 700;
+        }
+
+
+        .profile-icon {
+
+            width: 38px;
+
+            height: 38px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #f0f1f5;
+        }
+
+
+        .profile-icon svg {
+
+            width: 18px;
+
+            height: 18px;
+
+            fill: none;
+
+            stroke: #596174;
+
+            stroke-width: 1.6;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+        }
+
+
+        /* =====================================================
+           PAGE
+        ===================================================== */
+
+        .page {
+
+            width: 84%;
+
+            max-width: 1200px;
+
+            margin: 30px auto 60px;
+        }
+
+
+        /* =====================================================
+           BACK BUTTON
+        ===================================================== */
+
+        .back-row {
+
+            margin-bottom: 22px;
+        }
+
+
+        .back-btn {
+
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 8px;
+
+            border: none;
+
+            background: transparent;
+
+            color: #596174;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            padding: 5px 0;
+        }
+
+
+        .back-btn:hover {
+
+            color: #6338df;
+        }
+
+
+        .back-btn svg {
+
+            width: 17px;
+
+            height: 17px;
+
+            fill: none;
+
+            stroke: currentColor;
+
+            stroke-width: 1.8;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+        }
+
+
+        /* =====================================================
+           PRODUCT AREA
+        ===================================================== */
+
+        .product-container {
+
+            display: grid;
+
+            grid-template-columns:
+                1.05fr 0.95fr;
+
+            gap: 45px;
+
+            align-items: start;
+        }
+
+
+        /* =====================================================
+           GALLERY
+        ===================================================== */
+
+        .gallery {
+
+            position: sticky;
+
+            top: 105px;
+        }
+
+
+        .main-image {
+
+            position: relative;
+
+            width: 100%;
+
+            height: 490px;
+
+            overflow: hidden;
+
+            border-radius: 13px;
+
+            background: #eeeeee;
+
+            border: 1px solid #e0e3e9;
+        }
+
+
+        .main-image img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+
+            display: block;
+        }
+
+
+        /* FAVORITE */
+
+        .favorite-btn {
+
+            position: absolute;
+
+            top: 16px;
+
+            right: 16px;
+
+            width: 45px;
+
+            height: 45px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: white;
+
+            box-shadow:
+                0 4px 14px rgba(0,0,0,0.12);
+
+            cursor: pointer;
+
+            z-index: 5;
+        }
+
+
+        .favorite-btn svg {
+
+            width: 22px;
+
+            height: 22px;
+
+            fill: none;
+
+            stroke: #25304a;
+
+            stroke-width: 1.7;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+        }
+
+
+        .favorite-btn.active svg {
+
+            fill: #6338df;
+
+            stroke: #6338df;
+        }
+
+
+        /* IMAGE COUNTER */
+
+        .image-counter {
+
+            position: absolute;
+
+            bottom: 15px;
+
+            right: 15px;
+
+            padding: 7px 11px;
+
+            border-radius: 6px;
+
+            background: rgba(17,27,58,0.72);
+
+            color: white;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+
+        /* THUMBNAILS */
+
+        .thumbnails {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 10px;
+
+            margin-top: 12px;
+        }
+
+
+        .thumbnail {
+
+            height: 82px;
+
+            border: 2px solid transparent;
+
+            border-radius: 8px;
+
+            overflow: hidden;
+
+            background: #eeeeee;
+
+            cursor: pointer;
+
+            padding: 0;
+        }
+
+
+        .thumbnail.active {
+
+            border-color: #6338df;
+        }
+
+
+        .thumbnail img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        /* =====================================================
+           PRODUCT DETAILS
+        ===================================================== */
+
+        .product-info {
+
+            padding-top: 4px;
+        }
+
+
+        .category-label {
+
+            display: inline-block;
+
+            padding: 6px 10px;
+
+            border-radius: 5px;
+
+            background: #f0ebff;
+
+            color: #6338df;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            margin-bottom: 13px;
+        }
+
+
+        .product-title {
+
+            font-size: 32px;
+
+            line-height: 1.2;
+
+            margin-bottom: 13px;
+
+            letter-spacing: -0.4px;
+        }
+
+
+        .rating-row {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            margin-bottom: 18px;
+        }
+
+
+        .condition {
+
+            padding: 5px 9px;
+
+            border-radius: 5px;
+
+            background: #eaf8f0;
+
+            color: #078143;
+
+            font-size: 11px;
+
+            font-weight: 700;
+        }
+
+
+        /* PRICE */
+
+        .price {
+
+            color: #078143;
+
+            font-size: 29px;
+
+            font-weight: 700;
+
+            margin-bottom: 22px;
+        }
+
+
+        .price-note {
+
+            color: #7b8393;
+
+            font-size: 11px;
+
+            font-weight: 400;
+
+            margin-left: 7px;
+        }
+
+
+        /* DIVIDER */
+
+        .divider {
+
+            width: 100%;
+
+            height: 1px;
+
+            background: #e8e9ed;
+
+            margin: 22px 0;
+        }
+
+
+        /* DESCRIPTION */
+
+        .info-heading {
+
+            font-size: 17px;
+
+            margin-bottom: 11px;
+        }
+
+
+        .description {
+
+            color: #687187;
+
+            font-size: 13px;
+
+            line-height: 1.75;
+        }
+
+
+        /* =====================================================
+           PRODUCT DETAILS TABLE
+        ===================================================== */
+
+        .details-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 13px;
+
+            margin-top: 15px;
+        }
+
+
+        .detail {
+
+            padding: 12px;
+
+            background: #f7f8fb;
+
+            border-radius: 7px;
+        }
+
+
+        .detail-label {
+
+            color: #858c9a;
+
+            font-size: 10px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .detail-value {
+
+            color: #283149;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        /* =====================================================
+           SELLER
+        ===================================================== */
+
+        .seller-card {
+
+            padding: 16px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            background: #fafaff;
+
+            border: 1px solid #e1dff0;
+
+            border-radius: 9px;
+
+            margin-top: 18px;
+        }
+
+
+        .seller-left {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 11px;
+        }
+
+
+        .seller-avatar {
+
+            width: 43px;
+
+            height: 43px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #e8e1ff;
+
+            color: #6338df;
+
+            font-size: 15px;
+
+            font-weight: 700;
+        }
+
+
+        .seller-name {
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            margin-bottom: 4px;
+        }
+
+
+        .seller-meta {
+
+            color: #7b8392;
+
+            font-size: 10px;
+        }
+
+
+        .verified {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 4px;
+
+            color: #078143;
+
+            font-size: 10px;
+
+            font-weight: 700;
+        }
+
+
+        .verified svg {
+
+            width: 14px;
+
+            height: 14px;
+
+            fill: none;
+
+            stroke: #078143;
+
+            stroke-width: 1.8;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+        }
+
+
+        /* =====================================================
+           ACTION BUTTONS
+        ===================================================== */
+
+        .actions {
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            gap: 11px;
+
+            margin-top: 20px;
+        }
+
+
+        .contact-btn,
+        .request-btn {
+
+            height: 46px;
+
+            border-radius: 7px;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .contact-btn {
+
+            border: 1px solid #6338df;
+
+            background: white;
+
+            color: #6338df;
+        }
+
+
+        .contact-btn:hover {
+
+            background: #f4f0ff;
+        }
+
+
+        .request-btn {
+
+            border: none;
+
+            background: #6338df;
+
+            color: white;
+        }
+
+
+        .request-btn:hover {
+
+            background: #512fc6;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* =====================================================
+           SHARE
+        ===================================================== */
+
+        .share-row {
+
+            display: flex;
+
+            justify-content: center;
+
+            margin-top: 15px;
+        }
+
+
+        .share-btn {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 6px;
+
+            border: none;
+
+            background: transparent;
+
+            color: #737b8b;
+
+            font-size: 11px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .share-btn:hover {
+
+            color: #6338df;
+        }
+
+
+        .share-btn svg {
+
+            width: 16px;
+
+            height: 16px;
+
+            fill: none;
+
+            stroke: currentColor;
+
+            stroke-width: 1.7;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+        }
+
+
+        /* =====================================================
+           SAFETY
+        ===================================================== */
+
+        .safety-box {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            padding: 14px;
+
+            margin-top: 20px;
+
+            border-radius: 8px;
+
+            background: #f2edff;
+        }
+
+
+        .safety-box svg {
+
+            flex-shrink: 0;
+
+            width: 22px;
+
+            height: 22px;
+
+            fill: none;
+
+            stroke: #6338df;
+
+            stroke-width: 1.6;
+
+            stroke-linecap: round;
+
+            stroke-linejoin: round;
+        }
+
+
+        .safety-box h4 {
+
+            font-size: 11px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .safety-box p {
+
+            color: #6c7485;
+
+            font-size: 10px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           NOTIFICATION POPUP
+        ===================================================== */
+
+        .notification-popup {
+
+            position: fixed;
+
+            top: 92px;
+
+            right: 8%;
+
+            width: 290px;
+
+            padding: 18px;
+
+            display: none;
+
+            background: white;
+
+            border: 1px solid #e1e2e7;
+
+            border-radius: 9px;
+
+            box-shadow:
+                0 12px 35px rgba(0,0,0,0.15);
+
+            z-index: 2000;
+        }
+
+
+        .notification-popup.show {
+
+            display: block;
+        }
+
+
+        .notification-popup h3 {
+
+            font-size: 15px;
+
+            margin-bottom: 7px;
+        }
+
+
+        .notification-popup p {
+
+            color: #71798a;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           MODAL
+        ===================================================== */
+
+        .overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            display: none;
+
+            background: rgba(12,18,38,0.35);
+
+            z-index: 2500;
+        }
+
+
+        .overlay.show {
+
+            display: block;
+        }
+
+
+        .modal {
+
+            position: fixed;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 390px;
+
+            max-width: 90%;
+
+            padding: 28px;
+
+            background: white;
+
+            border-radius: 13px;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.2);
+
+            display: none;
+
+            z-index: 3000;
+        }
+
+
+        .modal.show {
+
+            display: block;
+        }
+
+
+        .modal h2 {
+
+            font-size: 20px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .modal p {
+
+            color: #71798a;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+
+            margin-bottom: 18px;
+        }
+
+
+        .modal-actions {
+
+            display: flex;
+
+            gap: 10px;
+        }
+
+
+        .modal-btn {
+
+            flex: 1;
+
+            height: 42px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 12px;
+
+            font-weight: 700;
+        }
+
+
+        .modal-cancel {
+
+            border: 1px solid #d9dce4;
+
+            background: white;
+
+            color: #596174;
+        }
+
+
+        .modal-confirm {
+
+            border: none;
+
+            background: #6338df;
+
+            color: white;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .navbar {
+
+                padding: 0 4%;
+            }
+
+
+            .nav-links {
+
+                gap: 20px;
+            }
+
+
+            .page {
+
+                width: 90%;
+            }
+
+
+            .product-container {
+
+                gap: 30px;
+            }
+
+        }
+
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+
+                display: none;
+            }
+
+
+            .product-container {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .gallery {
+
+                position: static;
+            }
+
+
+            .main-image {
+
+                height: 450px;
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                height: 70px;
+            }
+
+
+            .post-btn {
+
+                display: none;
+            }
+
+
+            .notification-btn {
+
+                display: none;
+            }
+
+
+            .login-btn span {
+
+                display: none;
+            }
+
+
+            .page {
+
+                width: 92%;
+
+                margin-top: 20px;
+            }
+
+
+            .main-image {
+
+                height: 330px;
+            }
+
+
+            .product-title {
+
+                font-size: 26px;
+            }
+
+
+            .price {
+
+                font-size: 25px;
+            }
+
+
+            .details-grid {
+
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+
+        @media (max-width: 420px) {
+
+            .logo-text {
+
+                font-size: 17px;
+            }
+
+
+            .actions {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .main-image {
+
+                height: 280px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar">
+
+
+    <!-- LOGO -->
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+
+        <div class="logo-icon">
+
+            <svg viewBox="0 0 24 24">
+
+                <path d="M3 9.5 12 5l9 4.5-9 4.5L3 9.5Z"></path>
+
+                <path d="M6 11.2V16c3.5 2.3 8.5 2.3 12 0v-4.8"></path>
+
+                <path d="M21 10v5"></path>
+
+            </svg>
+
+        </div>
+
+
+        <div class="logo-text">
+
+            Campus<br>
+
+            <span>
+                Marketplace
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <!-- NAV LINKS -->
+
+    <nav class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a
+            href="Browse.html"
+            class="active"
+        >
+            Browse
+        </a>
+
+        <a href="categories.html">
+            Categories
+        </a>
+
+        <a href="how-it-works.html">
+            How It Works
+        </a>
+
+        <a href="about.html">
+            About Us
+        </a>
+
+    </nav>
+
+
+    <!-- RIGHT -->
+
+    <div class="nav-right">
+
+
+        <button
+            class="post-btn"
+            onclick="goToPostItem()"
+        >
+            + Post an Item
+        </button>
+
+
+        <button
+            class="notification-btn"
+            onclick="toggleNotifications()"
+            aria-label="Notifications"
+        >
+
+            <svg viewBox="0 0 24 24">
+
+                <path
+                    d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9"
+                ></path>
+
+                <path
+                    d="M10 21h4"
+                ></path>
+
+            </svg>
+
+        </button>
+
+
+        <a
+            href="login.html"
+            class="login-btn"
+        >
+
+            <div class="profile-icon">
+
+                <svg viewBox="0 0 24 24">
+
+                    <circle
+                        cx="12"
+                        cy="8"
+                        r="3.5"
+                    ></circle>
+
+                    <path
+                        d="M5 21c.6-4 3-6 7-6s6.4 2 7 6"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+
+            <span>
+                Login
+            </span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     NOTIFICATION
+========================================================= -->
+
+<div
+    class="notification-popup"
+    id="notificationPopup"
+>
+
+    <h3>
+        Notifications
+    </h3>
+
+    <p>
+        You currently have no new notifications.
+    </p>
+
+</div>
+
+
+<!-- =========================================================
+     MAIN PAGE
+========================================================= -->
+
+<main class="page">
+
+
+    <!-- BACK -->
+
+    <div class="back-row">
+
+        <button
+            class="back-btn"
+            onclick="goToBrowse()"
+        >
+
+            <svg viewBox="0 0 24 24">
+
+                <path d="M19 12H5"></path>
+
+                <path d="m12 19-7-7 7-7"></path>
+
+            </svg>
+
+            Back to Browse
+
+        </button>
+
+    </div>
+
+
+    <!-- =====================================================
+         PRODUCT
+    ====================================================== -->
+
+    <div class="product-container">
+
+
+        <!-- =================================================
+             LEFT GALLERY
+        ================================================== -->
+
+        <section class="gallery">
+
+
+            <div class="main-image">
+
+                <img
+                id="mainProductImage"
+                alt=""
+                >
+
+
+                <!-- FAVORITE -->
+
+                <button
+                    class="favorite-btn"
+                    id="favoriteBtn"
+                    onclick="toggleFavorite()"
+                    aria-label="Add to favorites"
+                >
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M20.8 8.8c0 5.2-8.8 10.2-8.8 10.2S3.2 14 3.2 8.8A4.8 4.8 0 0 1 12 6.2a4.8 4.8 0 0 1 8.8 2.6Z"
+                        ></path>
+
+                    </svg>
+
+                </button>
+
+
+                <div class="image-counter">
+                    1 / 1
+                </div>
+
+            </div>
+
+
+            <!-- THUMBNAILS -->
+            
+            <div class="thumbnails" id="productThumbnails">
+                
+            </div>
+
+        </section>
+
+
+        <!-- =================================================
+             RIGHT INFORMATION
+        ================================================== -->
+
+        <section class="product-info">
+
+
+            <div class="category-label">
+                Furniture
+            </div>
+
+
+            <h1 class="product_title">
+                Study Chair
+            </h1>
+
+
+            <div class="rating-row">
+
+                <span class="condition">
+                    Good Condition
+                </span>
+
+            </div>
+
+
+            <div class="price">
+
+                ₹1,200
+
+                <span class="price-note">
+                    negotiable
+                </span>
+
+            </div>
+
+
+            <div class="divider"></div>
+
+
+            <!-- DESCRIPTION -->
+
+            <h2 class="info-heading">
+                Description
+            </h2>
+
+
+            <p class="description">
+
+                Comfortable study chair in good condition.
+                Perfect for students looking for a comfortable
+                chair for studying, coding or working from their
+                hostel room.
+
+                <br><br>
+
+                The chair has been well maintained and is ready
+                to use. There are no major damages and the
+                structure is stable.
+
+            </p>
+
+
+            <!-- PRODUCT DETAILS -->
+
+            <div class="divider"></div>
+
+
+            <h2 class="info-heading">
+                Product Details
+            </h2>
+
+
+            <div class="details-grid">
+
+
+                <div class="detail">
+
+                    <div class="detail-label">
+                        Category
+                    </div>
+
+                    <div class="detail-value">
+                        Furniture
+                    </div>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <div class="detail-label">
+                        Condition
+                    </div>
+
+                    <div class="detail-value">
+                        Good Condition
+                    </div>
+
+                </div>
+
+
+                <div class="detail">
+
+                    <div class="detail-label">
+                        Listed
+                    </div>
+
+                    <div class="detail-value">
+                        2 days ago
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SELLER -->
+
+            <div class="seller-card">
+
+
+                <div class="seller-left">
+
+
+                    <div class="seller-avatar">
+                        AK
+                    </div>
+
+
+                    <div>
+
+                        <div class="seller-name">
+                            Aman Kumar
+                        </div>
+
+
+                        <div class="seller-meta">
+                            Student · CSE · 3rd Year
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="verified">
+
+                    <svg viewBox="0 0 24 24">
+
+                        <path
+                            d="M12 3l2.2 1.2 2.5-.1 1.1 2.3 2 1.5-.7 2.4.7 2.4-2 1.5-1.1 2.3-2.5-.1L12 21l-2.2-1.2-2.5.1-1.1-2.3-2-1.5.7-2.4-.7-2.4 2-1.5 1.1-2.3 2.5.1L12 3Z"
+                        ></path>
+
+                        <path
+                            d="m8.5 12 2.2 2.2 4.8-5"
+                        ></path>
+
+                    </svg>
+
+                    Verified
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+
+            <div class="actions">
+
+
+                <button
+                    class="contact-btn"
+                    onclick="openContactModal()"
+                >
+                    Contact Seller
+                </button>
+
+
+                <button
+                    class="request-btn"
+                    onclick="openRequestModal()"
+                >
+                    Request to Buy
+                </button>
+
+            </div>
+
+
+            <!-- SHARE -->
+
+            <div class="share-row">
+
+                <button
+                    class="share-btn"
+                    onclick="shareProduct()"
+                >
+
+                    <svg viewBox="0 0 24 24">
+
+                        <circle
+                            cx="18"
+                            cy="5"
+                            r="2.5"
+                        ></circle>
+
+                        <circle
+                            cx="6"
+                            cy="12"
+                            r="2.5"
+                        ></circle>
+
+                        <circle
+                            cx="18"
+                            cy="19"
+                            r="2.5"
+                        ></circle>
+
+                        <path
+                            d="m8.2 10.8 7.6-4.5"
+                        ></path>
+
+                        <path
+                            d="m8.2 13.2 7.6 4.5"
+                        ></path>
+
+                    </svg>
+
+                    Share this listing
+
+                </button>
+
+            </div>
+
+
+            <!-- SAFETY -->
+
+            <div class="safety-box">
+
+                <svg viewBox="0 0 24 24">
+
+                    <path
+                        d="M12 3 20 6v5c0 5-3.4 8.5-8 10-4.6-1.5-8-5-8-10V6l8-3Z"
+                    ></path>
+
+                    <path
+                        d="m8.5 12 2.2 2.2 4.8-5"
+                    ></path>
+
+                </svg>
+
+
+                <div>
+
+                    <h4>
+                        Stay Safe
+                    </h4>
+
+
+                    <p>
+                        Meet in a public campus location and
+                        verify the item before making payment.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+
+<!-- =========================================================
+     OVERLAY
+========================================================= -->
+
+<div
+    class="overlay"
+    id="overlay"
+    onclick="closeModal()"
+></div>
+
+
+<!-- =========================================================
+     CONTACT MODAL
+========================================================= -->
+
+<div
+    class="modal"
+    id="contactModal"
+>
+
+    <h2>
+        Contact Seller
+    </h2>
+
+
+    <p>
+
+        You are contacting <strong>Aman Kumar</strong>
+        about the Study Chair.
+
+    </p>
+
+
+    <div class="modal-actions">
+
+        <button
+            class="modal-btn modal-cancel"
+            onclick="closeModal()"
+        >
+            Cancel
+        </button>
+
+
+        <button
+            class="modal-btn modal-confirm"
+            onclick="startChat()"
+        >
+            Start Chat
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     REQUEST MODAL
+========================================================= -->
+
+<div
+    class="modal"
+    id="requestModal"
+>
+
+    <h2>
+        Request to Buy
+    </h2>
+
+
+    <p>
+
+        Send a purchase request to the seller.
+        The seller will be able to respond to your request.
+
+    </p>
+
+
+    <div class="modal-actions">
+
+        <button
+            class="modal-btn modal-cancel"
+            onclick="closeModal()"
+        >
+            Cancel
+        </button>
+
+
+        <button
+            class="modal-btn modal-confirm"
+            onclick="sendRequest()"
+        >
+            Send Request
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+    /* =====================================================
+       CHANGE IMAGE
+    ===================================================== */
+
+    function changeImage(
+        thumbnail,
+        imageUrl
+    ) {
+
+        document.getElementById(
+            "mainProductImage"
+        ).src = imageUrl;
+
+
+        const thumbnails =
+            document.querySelectorAll(
+                ".thumbnail"
+            );
+
+
+        thumbnails.forEach(
+            function(item) {
+
+                item.classList.remove(
+                    "active"
+                );
+
+            }
+        );
+
+
+        thumbnail.classList.add(
+            "active"
+        );
+
+    }
+
+
+    /* =====================================================
+       FAVORITE
+    ===================================================== */
+
+    function toggleFavorite() {
+
+        const button =
+            document.getElementById(
+                "favoriteBtn"
+            );
+
+
+        button.classList.toggle(
+            "active"
+        );
+
+
+        const isFavorite =
+            button.classList.contains(
+                "active"
+            );
+
+
+        localStorage.setItem(
+            "productFavorite",
+            isFavorite
+        );
+
+    }
+
+
+    /* =====================================================
+       LOAD FAVORITE
+    ===================================================== */
+
+    function loadFavorite() {
+
+        const saved =
+            localStorage.getItem(
+                "productFavorite"
+            );
+
+
+        if (saved === "true") {
+
+            document
+                .getElementById(
+                    "favoriteBtn"
+                )
+                .classList.add(
+                    "active"
+                );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       BROWSE
+    ===================================================== */
+
+    function goToBrowse() {
+
+        window.location.href =
+            "Browse.html";
+
+    }
+
+
+    /* =====================================================
+       POST ITEM
+    ===================================================== */
+
+    function goToPostItem() {
+
+        window.location.href =
+            "post-item.html";
+
+    }
+
+
+    /* =====================================================
+       NOTIFICATIONS
+    ===================================================== */
+
+    function toggleNotifications() {
+
+        document
+            .getElementById(
+                "notificationPopup"
+            )
+            .classList.toggle(
+                "show"
+            );
+
+    }
+
+
+    /* =====================================================
+       MODAL
+    ===================================================== */
+
+    function openContactModal() {
+
+        document
+            .getElementById(
+                "overlay"
+            )
+            .classList.add(
+                "show"
+            );
+
+
+        document
+            .getElementById(
+                "contactModal"
+            )
+            .classList.add(
+                "show"
+            );
+
+    }
+
+
+    function openRequestModal() {
+
+        document
+            .getElementById(
+                "overlay"
+            )
+            .classList.add(
+                "show"
+            );
+
+
+        document
+            .getElementById(
+                "requestModal"
+            )
+            .classList.add(
+                "show"
+            );
+
+    }
+
+
+    function closeModal() {
+
+        document
+            .getElementById(
+                "overlay"
+            )
+            .classList.remove(
+                "show"
+            );
+
+
+        document
+            .getElementById(
+                "contactModal"
+            )
+            .classList.remove(
+                "show"
+            );
+
+
+        document
+            .getElementById(
+                "requestModal"
+            )
+            .classList.remove(
+                "show"
+            );
+
+    }
+
+
+    /* =====================================================
+       CHAT
+    ===================================================== */
+
+    function startChat() {
+
+        closeModal();
+
+        alert(
+            "Chat feature will be available when the backend is connected."
+        );
+
+    }
+
+
+    /* =====================================================
+       REQUEST
+    ===================================================== */
+
+    function sendRequest() {
+
+        closeModal();
+
+        localStorage.setItem(
+            "purchaseRequest",
+            "Study Chair"
+        );
+
+
+        alert(
+            "Your purchase request has been sent to the seller."
+        );
+
+    }
+
+
+    /* =====================================================
+       SHARE
+    ===================================================== */
+
+    function shareProduct() {
+
+        const productUrl =
+            window.location.href;
+
+
+        if (
+            navigator.share
+        ) {
+
+            navigator.share({
+
+                title:
+                    "Study Chair | Campus Marketplace",
+
+                text:
+                    "Check out this Study Chair on Campus Marketplace.",
+
+                url:
+                    productUrl
+
+            });
+
+        } else {
+
+            navigator.clipboard.writeText(
+                productUrl
+            );
+
+
+            alert(
+                "Product link copied to clipboard."
+            );
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CLOSE NOTIFICATION WHEN CLICKING OUTSIDE
+    ===================================================== */
+
+    document.addEventListener(
+        "click",
+        function(event) {
+
+            const popup =
+                document.getElementById(
+                    "notificationPopup"
+                );
+
+
+            const button =
+                document.querySelector(
+                    ".notification-btn"
+                );
+
+
+            if (
+                !popup.contains(event.target) &&
+                !button.contains(event.target)
+            ) {
+
+                popup.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       LOAD
+    ===================================================== */
+
+    window.addEventListener(
+        "DOMContentLoaded",
+        function() {
+
+            loadFavorite();
+
+        }
+    );
+
+    
+    /* =====================================================
+   DYNAMIC PRODUCT DATA
+===================================================== */
+
+const productDatabase = {
+
+    "Engineering Mathematics Book": {
+        category: "Books & Notes",
+        price: "₹350",
+        condition: "Good Condition",
+        image: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=1000&q=85",
+        description:
+            "Engineering Mathematics book in good condition. Useful for engineering students for mathematics courses, assignments and examinations."
+    },
+
+    "HP Pavilion Laptop": {
+        category: "Electronics",
+        price: "₹28,000",
+        condition: "Like New",
+        image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1000&q=85",
+        description:
+            "HP Pavilion laptop in excellent condition. Suitable for programming, college projects, assignments and everyday student use."
+    },
+
+    "Study Chair": {
+        category: "Furniture",
+        price: "₹1,200",
+        condition: "Good Condition",
+        image: "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&w=1000&q=85",
+        description:
+            "Comfortable study chair in good condition. Perfect for studying, coding or working from a hostel room."
+    },
+
+    "Boat Headphones": {
+        category: "Electronics",
+        price: "₹1,000",
+        condition: "Like New",
+        image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=85",
+        description:
+            "Boat headphones in excellent condition. Suitable for music, online classes and entertainment."
+    },
+
+    "Skybags Backpack": {
+        category: "Accessories",
+        price: "₹800",
+        condition: "Good Condition",
+        image: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1000&q=85",
+        description:
+            "Skybags backpack in good condition. Spacious and suitable for college books, laptop and everyday essentials."
+    },
+
+    "Yamaha Acoustic Guitar": {
+        category: "Hobbies",
+        price: "₹5,500",
+        condition: "Good Condition",
+        image: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1000&q=85",
+        description:
+            "Yamaha acoustic guitar in good condition. Suitable for beginners and students interested in learning guitar."
+    }
+
+};
+
+
+/* =====================================================
+   GET PRODUCT NAME FROM URL
+===================================================== */
+
+const urlParams =
+    new URLSearchParams(window.location.search);
+
+const selectedProduct =
+    urlParams.get("name");
+
+
+/* =====================================================
+   LOAD CORRECT PRODUCT
+===================================================== */
+
+function loadSelectedProduct() {
+
+    if (!selectedProduct) {
+        return;
+    }
+
+    const product =
+        productDatabase[selectedProduct];
+
+    if (!product) {
+        console.log("Product not found:", selectedProduct);
+        return;
+    }
+
+
+    /* PRODUCT TITLE */
+
+    const title =
+        document.querySelector(".product_title");
+
+    if (title) {
+        title.textContent = selectedProduct;
+    }
+
+
+    /* CATEGORY */
+
+    const category =
+        document.querySelector(".category-label");
+
+    if (category) {
+        category.textContent = product.category;
+    }
+
+
+    /* CONDITION */
+
+    const condition =
+        document.querySelector(".condition");
+
+    if (condition) {
+        condition.textContent = product.condition;
+    }
+
+
+    /* PRICE */
+
+    const price =
+        document.querySelector(".price");
+
+    if (price) {
+        price.textContent = product.price;
+    }
+
+
+    /* DESCRIPTION */
+
+    const description =
+        document.querySelector(".description");
+
+    if (description) {
+        description.textContent =
+            product.description;
+    }
+
+
+    /* PRODUCT GALLERY */
+
+const mainImage =
+    document.getElementById("mainProductImage");
+
+const thumbnails =
+    document.getElementById("productThumbnails");
+
+const imageCounter =
+    document.querySelector(".image-counter");
+
+if (mainImage) {
+
+    // Use multiple images if available
+    const images = product.images && product.images.length
+        ? product.images
+        : [product.image];
+
+    // Main image
+    mainImage.src = images[0];
+    mainImage.alt = selectedProduct;
+
+    // Number of images
+    if (imageCounter) {
+        imageCounter.textContent = `1 / ${images.length}`;
+    }
+
+    // Create thumbnails
+    if (thumbnails) {
+
+        thumbnails.innerHTML = "";
+
+        images.forEach((imageUrl, index) => {
+
+            const button = document.createElement("button");
+
+            button.className =
+                index === 0
+                    ? "thumbnail active"
+                    : "thumbnail";
+
+            button.onclick = function () {
+                changeImage(this, imageUrl);
+
+                if (imageCounter) {
+                    imageCounter.textContent =
+                        `${index + 1} / ${images.length}`;
+                }
+            };
+
+            const img =
+                document.createElement("img");
+
+            img.src = imageUrl;
+            img.alt = selectedProduct;
+
+            button.appendChild(img);
+            thumbnails.appendChild(button);
+        });
+    }
+}
+
+    /* ALL PRODUCT TEXT */
+
+    document
+        .querySelectorAll(".product-title")
+        .forEach(function(element) {
+
+            element.textContent =
+                selectedProduct;
+
+        });
+
+
+    /* SAVE CURRENT PRODUCT */
+
+    localStorage.setItem(
+        "currentProduct",
+        selectedProduct
+    );
+
+}
+
+
+/* =====================================================
+   RUN AFTER PAGE LOAD
+===================================================== */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    loadSelectedProduct
+);
+
+
+</script>
+
+</body>
+
+</html>

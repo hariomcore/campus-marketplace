@@ -1,0 +1,2753 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Post an Item | Campus Marketplace
+    </title>
+
+
+    <style>
+
+        /* =====================================================
+           RESET
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+
+        body {
+            background: #f8f9fc;
+            color: #101b3a;
+        }
+
+
+        button,
+        input,
+        textarea,
+        select {
+            font-family: inherit;
+        }
+
+
+        /* =====================================================
+           NAVBAR
+        ===================================================== */
+
+        .navbar {
+
+            height: 82px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 7.8%;
+
+            background: white;
+
+            border-bottom: 1px solid #eeeeee;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 1000;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+
+            display: flex;
+            align-items: center;
+
+            gap: 11px;
+
+            text-decoration: none;
+
+            color: #101b3a;
+        }
+
+
+        .logo-icon {
+
+            width: 47px;
+            height: 47px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 10px;
+
+            background: #6538df;
+
+            font-size: 25px;
+        }
+
+
+        .logo-text {
+
+            font-size: 21px;
+
+            line-height: 1.05;
+
+            font-weight: 700;
+        }
+
+
+        .logo-text span {
+
+            color: #6338df;
+        }
+
+
+        /* =====================================================
+           NAV LINKS
+        ===================================================== */
+
+        .nav-links {
+
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+
+            gap: 39px;
+        }
+
+
+        .nav-links a {
+
+            height: 100%;
+
+            display: flex;
+            align-items: center;
+
+            position: relative;
+
+            color: #101b3a;
+
+            text-decoration: none;
+
+            font-size: 16px;
+
+            font-weight: 700;
+        }
+
+
+        .nav-links a:hover {
+
+            color: #6338df;
+        }
+
+
+        .nav-links a.active {
+
+            color: #6338df;
+        }
+
+
+        .nav-links a.active::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 0;
+            right: 0;
+
+            bottom: 0;
+
+            height: 3px;
+
+            background: #6338df;
+        }
+
+
+        /* =====================================================
+           RIGHT NAV
+        ===================================================== */
+
+        .nav-right {
+
+            display: flex;
+            align-items: center;
+
+            gap: 25px;
+        }
+
+
+        .notification-btn {
+
+            border: none;
+
+            background: transparent;
+
+            color: #101b3a;
+
+            font-size: 23px;
+
+            cursor: pointer;
+        }
+
+
+        .notification-btn:hover {
+
+            color: #6338df;
+        }
+
+
+        .login-btn {
+
+            display: flex;
+            align-items: center;
+
+            gap: 10px;
+
+            text-decoration: none;
+
+            color: #101b3a;
+
+            font-size: 16px;
+
+            font-weight: 700;
+        }
+
+
+        .profile-icon {
+
+            width: 38px;
+            height: 38px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #f1f2f6;
+
+            font-size: 18px;
+        }
+
+
+        /* =====================================================
+           PAGE HEADER
+        ===================================================== */
+
+        .page-header {
+
+            background: white;
+
+            padding: 43px 8% 37px;
+
+            border-bottom: 1px solid #eeeeee;
+        }
+
+
+        .page-header h1 {
+
+            font-size: 34px;
+
+            margin-bottom: 9px;
+        }
+
+
+        .page-header p {
+
+            color: #687187;
+
+            font-size: 15px;
+        }
+
+
+        /* =====================================================
+           MAIN CONTAINER
+        ===================================================== */
+
+        .main-container {
+
+            width: 84%;
+
+            max-width: 1180px;
+
+            margin: 32px auto 60px;
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 330px;
+
+            gap: 25px;
+
+            align-items: start;
+        }
+
+
+        /* =====================================================
+           FORM CARD
+        ===================================================== */
+
+        .form-card {
+
+            background: white;
+
+            border: 1px solid #e0e3e9;
+
+            border-radius: 13px;
+
+            padding: 30px;
+        }
+
+
+        .form-card h2 {
+
+            font-size: 21px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .form-subtitle {
+
+            color: #687187;
+
+            font-size: 13px;
+
+            margin-bottom: 27px;
+        }
+
+
+        /* =====================================================
+           FORM SECTIONS
+        ===================================================== */
+
+        .form-section {
+
+            margin-bottom: 28px;
+
+            padding-bottom: 26px;
+
+            border-bottom: 1px solid #eeeeee;
+        }
+
+
+        .form-section:last-of-type {
+
+            border-bottom: none;
+
+            margin-bottom: 5px;
+        }
+
+
+        .form-section-title {
+
+            font-size: 16px;
+
+            margin-bottom: 17px;
+        }
+
+
+        /* =====================================================
+           FORM ROW
+        ===================================================== */
+
+        .form-row {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 17px;
+
+            margin-bottom: 17px;
+        }
+
+
+        .form-group {
+
+            display: flex;
+
+            flex-direction: column;
+        }
+
+
+        .form-group.full {
+
+            width: 100%;
+        }
+
+
+        label {
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            margin-bottom: 8px;
+
+            color: #27324b;
+        }
+
+
+        .required {
+
+            color: #6338df;
+        }
+
+
+        input,
+        select,
+        textarea {
+
+            width: 100%;
+
+            border: 1px solid #d9dde5;
+
+            border-radius: 7px;
+
+            background: white;
+
+            color: #27324b;
+
+            outline: none;
+
+            font-size: 13px;
+
+            transition: 0.2s;
+        }
+
+
+        input,
+        select {
+
+            height: 44px;
+
+            padding: 0 12px;
+        }
+
+
+        textarea {
+
+            min-height: 125px;
+
+            padding: 12px;
+
+            resize: vertical;
+
+            line-height: 1.5;
+        }
+
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+
+            border-color: #6338df;
+
+            box-shadow:
+                0 0 0 3px rgba(99,56,223,0.08);
+        }
+
+
+        input::placeholder,
+        textarea::placeholder {
+
+            color: #9aa1b0;
+        }
+
+
+        /* =====================================================
+           PRICE
+        ===================================================== */
+
+        .price-input {
+
+            position: relative;
+        }
+
+
+        .price-symbol {
+
+            position: absolute;
+
+            left: 13px;
+
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: #687187;
+
+            font-size: 14px;
+
+            z-index: 1;
+        }
+
+
+        .price-input input {
+
+            padding-left: 28px;
+        }
+
+
+        /* =====================================================
+           IMAGE UPLOAD
+        ===================================================== */
+
+        .upload-area {
+
+            border: 2px dashed #d9d2f5;
+
+            border-radius: 10px;
+
+            background: #faf9ff;
+
+            padding: 28px 20px;
+
+            text-align: center;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .upload-area:hover {
+
+            border-color: #6338df;
+
+            background: #f7f4ff;
+        }
+
+
+        .upload-icon {
+
+            width: 55px;
+            height: 55px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            margin: 0 auto 12px;
+
+            border-radius: 50%;
+
+            background: #eee9ff;
+
+            color: #6338df;
+
+            font-size: 27px;
+        }
+
+
+        .upload-area h3 {
+
+            font-size: 15px;
+
+            margin-bottom: 6px;
+        }
+
+
+        .upload-area p {
+
+            color: #7b8394;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+        }
+
+
+        #imageInput {
+
+            display: none;
+        }
+
+
+        /* IMAGE PREVIEW */
+
+        .preview-container {
+
+            display: none;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 10px;
+
+            margin-top: 14px;
+        }
+
+
+        .preview-container.show {
+
+            display: grid;
+        }
+
+
+        .preview-box {
+
+            position: relative;
+
+            height: 125px;
+
+            border-radius: 8px;
+
+            overflow: hidden;
+
+            border: 1px solid #e0e3e9;
+
+            background: #f3f4f7;
+        }
+
+
+        .preview-box img {
+
+            width: 100%;
+
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .remove-image {
+
+            position: absolute;
+
+            top: 6px;
+
+            right: 6px;
+
+            width: 25px;
+
+            height: 25px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: white;
+
+            color: #4f586c;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 2px 8px rgba(0,0,0,0.15);
+        }
+
+
+        .remove-image:hover {
+
+            color: #6338df;
+        }
+
+
+        /* =====================================================
+           CONTACT OPTIONS
+        ===================================================== */
+
+        .contact-options {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 10px;
+        }
+
+
+        .contact-option {
+
+            position: relative;
+        }
+
+
+        .contact-option input {
+
+            position: absolute;
+
+            opacity: 0;
+
+            pointer-events: none;
+        }
+
+
+        .contact-option label {
+
+            height: 48px;
+
+            margin: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 7px;
+
+            border: 1px solid #dfe2e8;
+
+            border-radius: 7px;
+
+            color: #596276;
+
+            cursor: pointer;
+
+            font-size: 12px;
+
+            font-weight: 600;
+
+            transition: 0.2s;
+        }
+
+
+        .contact-option input:checked + label {
+
+            border-color: #6338df;
+
+            background: #f3efff;
+
+            color: #6338df;
+        }
+
+
+        /* =====================================================
+           CHECKBOX
+        ===================================================== */
+
+        .agreement {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 9px;
+
+            margin-top: 18px;
+        }
+
+
+        .agreement input {
+
+            width: 17px;
+            height: 17px;
+
+            margin-top: 1px;
+
+            accent-color: #6338df;
+
+            cursor: pointer;
+        }
+
+
+        .agreement label {
+
+            margin: 0;
+
+            color: #687187;
+
+            font-size: 12px;
+
+            line-height: 1.5;
+
+            font-weight: 400;
+
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+           FORM BUTTONS
+        ===================================================== */
+
+        .form-actions {
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 11px;
+
+            margin-top: 22px;
+        }
+
+
+        .cancel-btn {
+
+            height: 44px;
+
+            padding: 0 22px;
+
+            border: 1px solid #d7dbe3;
+
+            border-radius: 7px;
+
+            background: white;
+
+            color: #4f586c;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        .cancel-btn:hover {
+
+            background: #f5f5f7;
+        }
+
+
+        .publish-btn {
+
+            height: 44px;
+
+            padding: 0 25px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #6338df;
+
+            color: white;
+
+            font-size: 13px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+
+        .publish-btn:hover {
+
+            background: #5028c7;
+
+            transform: translateY(-1px);
+        }
+
+
+        /* =====================================================
+           SIDEBAR
+        ===================================================== */
+
+        .side-column {
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 18px;
+
+            position: sticky;
+
+            top: 105px;
+        }
+
+
+        .side-card {
+
+            background: white;
+
+            border: 1px solid #e0e3e9;
+
+            border-radius: 12px;
+
+            padding: 23px;
+        }
+
+
+        .side-card h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 17px;
+        }
+
+
+        /* SELLING TIPS */
+
+        .tip {
+
+            display: flex;
+
+            align-items: flex-start;
+
+            gap: 10px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .tip:last-child {
+
+            margin-bottom: 0;
+        }
+
+
+        .tip-icon {
+
+            flex-shrink: 0;
+
+            width: 30px;
+            height: 30px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 7px;
+
+            background: #f1edff;
+
+            font-size: 15px;
+        }
+
+
+        .tip h4 {
+
+            font-size: 12px;
+
+            margin-bottom: 4px;
+        }
+
+
+        .tip p {
+
+            color: #7a8292;
+
+            font-size: 11px;
+
+            line-height: 1.5;
+        }
+
+
+        /* SAFETY CARD */
+
+        .safety-card {
+
+            background: #f2edff;
+
+            border: none;
+        }
+
+
+        .safety-header {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 12px;
+        }
+
+
+        .safety-header-icon {
+
+            font-size: 24px;
+        }
+
+
+        .safety-card h3 {
+
+            margin: 0;
+        }
+
+
+        .safety-card p {
+
+            color: #626b7e;
+
+            font-size: 12px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =====================================================
+           NOTIFICATION
+        ===================================================== */
+
+        .notification-popup {
+
+            position: fixed;
+
+            top: 92px;
+
+            right: 8%;
+
+            width: 300px;
+
+            padding: 18px;
+
+            background: white;
+
+            border: 1px solid #e3e3e3;
+
+            border-radius: 10px;
+
+            box-shadow:
+                0 12px 35px rgba(0,0,0,0.15);
+
+            display: none;
+
+            z-index: 2000;
+        }
+
+
+        .notification-popup.show {
+
+            display: block;
+        }
+
+
+        .notification-popup h3 {
+
+            font-size: 16px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .notification-popup p {
+
+            color: #6a7285;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =====================================================
+           SUCCESS POPUP
+        ===================================================== */
+
+        .success-popup {
+
+            position: fixed;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform: translate(-50%, -50%);
+
+            width: 390px;
+
+            max-width: 90%;
+
+            padding: 32px;
+
+            background: white;
+
+            border-radius: 14px;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,0.22);
+
+            text-align: center;
+
+            display: none;
+
+            z-index: 3000;
+        }
+
+
+        .success-popup.show {
+
+            display: block;
+        }
+
+
+        .success-icon {
+
+            width: 65px;
+            height: 65px;
+
+            margin: 0 auto 15px;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: #e9f8ef;
+
+            color: #078143;
+
+            font-size: 30px;
+        }
+
+
+        .success-popup h2 {
+
+            font-size: 21px;
+
+            margin-bottom: 8px;
+        }
+
+
+        .success-popup p {
+
+            color: #687187;
+
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            margin-bottom: 20px;
+        }
+
+
+        .success-button {
+
+            width: 100%;
+
+            height: 42px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #6338df;
+
+            color: white;
+
+            font-weight: 700;
+
+            cursor: pointer;
+        }
+
+
+        /* OVERLAY */
+
+        .overlay {
+
+            position: fixed;
+
+            inset: 0;
+
+            background: rgba(16,27,58,0.30);
+
+            display: none;
+
+            z-index: 2500;
+        }
+
+
+        .overlay.show {
+
+            display: block;
+        }
+
+
+        /* =====================================================
+           RESPONSIVE
+        ===================================================== */
+
+        @media (max-width: 1100px) {
+
+            .navbar {
+
+                padding: 0 4%;
+            }
+
+
+            .nav-links {
+
+                gap: 20px;
+            }
+
+
+            .main-container {
+
+                width: 90%;
+
+                grid-template-columns:
+                    1fr 280px;
+            }
+
+        }
+
+
+        @media (max-width: 850px) {
+
+            .nav-links {
+
+                display: none;
+            }
+
+
+            .main-container {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .side-column {
+
+                position: static;
+
+                display: grid;
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                height: 70px;
+            }
+
+
+            .notification-btn {
+
+                display: none;
+            }
+
+
+            .login-btn span {
+
+                display: none;
+            }
+
+
+            .page-header {
+
+                padding: 35px 5%;
+            }
+
+
+            .page-header h1 {
+
+                font-size: 29px;
+            }
+
+
+            .main-container {
+
+                width: 90%;
+
+                margin-top: 22px;
+            }
+
+
+            .form-card {
+
+                padding: 22px;
+            }
+
+
+            .form-row {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .contact-options {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .preview-container {
+
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+
+            .side-column {
+
+                grid-template-columns: 1fr;
+            }
+
+
+            .form-actions {
+
+                flex-direction: column-reverse;
+            }
+
+
+            .cancel-btn,
+            .publish-btn {
+
+                width: 100%;
+            }
+
+        }
+
+
+        @media (max-width: 400px) {
+
+            .logo-text {
+
+                font-size: 18px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     NAVBAR
+========================================================= -->
+
+<header class="navbar">
+
+
+    <!-- LOGO -->
+
+    <a
+        href="index.html"
+        class="logo"
+    >
+
+        <div class="logo-icon">
+            🎓
+        </div>
+
+
+        <div class="logo-text">
+
+            Campus<br>
+
+            <span>
+                Marketplace
+            </span>
+
+        </div>
+
+    </a>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="nav-links">
+
+        <a href="index.html">
+            Home
+        </a>
+
+
+        <a href="Browse.html">
+            Browse
+        </a>
+
+
+        <a href="categories.html">
+            Categories
+        </a>
+
+
+        <a href="how-it-works.html">
+            How It Works
+        </a>
+
+
+        <a href="about.html">
+            About Us
+        </a>
+
+    </nav>
+
+
+    <!-- RIGHT -->
+
+    <div class="nav-right">
+
+
+        <button
+            class="notification-btn"
+            onclick="toggleNotifications()"
+            title="Notifications"
+        >
+            ♧
+        </button>
+
+
+        <a
+            href="login.html"
+            class="login-btn"
+        >
+
+            <div class="profile-icon">
+                ♙
+            </div>
+
+
+            <span>
+                Login
+            </span>
+
+        </a>
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     NOTIFICATION
+========================================================= -->
+
+<div
+    class="notification-popup"
+    id="notificationPopup"
+>
+
+    <h3>
+        Notifications
+    </h3>
+
+
+    <p>
+        You currently have no new notifications.
+    </p>
+
+</div>
+
+
+<!-- =========================================================
+     PAGE HEADER
+========================================================= -->
+
+<section class="page-header">
+
+    <h1>
+        Post an Item
+    </h1>
+
+
+    <p>
+        List an item and connect with students on your campus.
+    </p>
+
+</section>
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main class="main-container">
+
+
+    <!-- =====================================================
+         FORM
+    ====================================================== -->
+
+    <section class="form-card">
+
+
+        <h2>
+            Create Your Listing
+        </h2>
+
+
+        <p class="form-subtitle">
+            Provide accurate details so buyers can find your item easily.
+        </p>
+
+
+        <form
+            id="itemForm"
+            onsubmit="publishItem(event)"
+        >
+
+
+            <!-- =================================================
+                 BASIC INFORMATION
+            ================================================== -->
+
+            <div class="form-section">
+
+                <h3 class="form-section-title">
+                    Item Information
+                </h3>
+
+
+                <div class="form-row">
+
+    <!-- ITEM TITLE -->
+    <div class="form-group">
+        <label for="title">
+            Item Title <span class="required">*</span>
+        </label>
+
+        <input
+            type="text"
+            id="title"
+            placeholder="e.g. HP Pavilion Laptop"
+            required
+        >
+    </div>
+
+                <!-- PRICE -->
+
+                <div class="form-group">
+
+                    <label for="price">
+                        Price <span class="required">*</span>
+                    </label>
+
+                <div class="price-input">
+
+                <span class="price-symbol">₹</span>
+
+                <input
+                    type="number"
+                    id="price"
+                    placeholder="Enter price"
+                    min="0"
+                    max="10000000"
+                    required
+                >
+                        </div>
+                    </div>
+
+            </div>
+
+                <br>
+
+
+                <!-- CATEGORY / CONDITION -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="category">
+
+                            Category
+                            <span class="required">*</span>
+
+                        </label>
+
+
+                        <select
+                            id="category"
+                            required
+                        >
+
+                            <option value="">
+                                Select Category
+                            </option>
+
+                            <option value="Books & Notes">
+                                Books & Notes
+                            </option>
+
+                            <option value="Electronics">
+                                Electronics
+                            </option>
+
+                            <option value="Furniture">
+                                Furniture
+                            </option>
+
+                            <option value="Clothing">
+                                Clothing
+                            </option>
+
+                            <option value="Sports">
+                                Sports
+                            </option>
+
+                            <option value="Hobbies">
+                                Hobbies
+                            </option>
+
+                            <option value="Stationery">
+                                Stationery
+                            </option>
+
+                            <option value="Hostel Essentials">
+                                Hostel Essentials
+                            </option>
+
+                            <option value="Others">
+                                Others
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="condition">
+
+                            Condition
+                            <span class="required">*</span>
+
+                        </label>
+
+
+                        <select
+                            id="condition"
+                            required
+                        >
+
+                            <option value="">
+                                Select Condition
+                            </option>
+
+                            <option value="New">
+                                New
+                            </option>
+
+                            <option value="Like New">
+                                Like New
+                            </option>
+
+                            <option value="Good Condition">
+                                Good Condition
+                            </option>
+
+                            <option value="Fair Condition">
+                                Fair Condition
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+            
+            </div>
+
+            
+            <!-- =================================================
+                 DESCRIPTION
+            ================================================== -->
+
+            <div class="form-section">
+
+                <h3 class="form-section-title">
+                    Description
+                </h3>
+
+
+                <div class="form-group">
+
+                    <label for="description">
+
+                        Item Description
+                        <span class="required">*</span>
+
+                    </label>
+
+
+                    <textarea
+                        id="description"
+                        placeholder="Describe the item, its condition, age, features and anything the buyer should know..."
+                        maxlength="1000"
+                        required
+                    ></textarea>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 PHOTOS
+            ================================================== -->
+
+            <div class="form-section">
+
+                <h3 class="form-section-title">
+                    Photos
+                </h3>
+
+
+                <div
+                    class="upload-area"
+                    onclick="document.getElementById('imageInput').click()"
+                >
+
+                    <div class="upload-icon">
+                        ↑
+                    </div>
+
+
+                    <h3>
+                        Upload Item Photos
+                    </h3>
+
+
+                    <p>
+                        Click here to select images.
+                        You can upload up to 5 photos.
+                    </p>
+
+
+                    <p>
+                        JPG, PNG or WEBP
+                    </p>
+
+                </div>
+
+
+                <input
+                    type="file"
+                    id="imageInput"
+                    accept="image/jpeg,image/png,image/webp"
+                    multiple
+                >
+
+
+                <div
+                    class="preview-container"
+                    id="previewContainer"
+                >
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 CONTACT
+            ================================================== -->
+
+            <div class="form-section">
+
+                <h3 class="form-section-title">
+                    Contact Preference
+                </h3>
+
+
+                <div class="contact-options">
+
+
+                    <div class="contact-option">
+
+                        <input
+                            type="radio"
+                            id="chat"
+                            name="contact"
+                            value="Chat"
+                            checked
+                        >
+
+
+                        <label for="chat">
+                            💬 Chat
+                        </label>
+
+                    </div>
+
+
+                    <div class="contact-option">
+
+                        <input
+                            type="radio"
+                            id="email"
+                            name="contact"
+                            value="Email"
+                        >
+
+
+                        <label for="email">
+                            ✉️ Email
+                        </label>
+
+                    </div>
+
+
+                    <div class="contact-option">
+
+                        <input
+                            type="radio"
+                            id="phone"
+                            name="contact"
+                            value="Phone"
+                        >
+
+
+                        <label for="phone">
+                            📞 Phone
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- AGREEMENT -->
+
+                <div class="agreement">
+
+                    <input
+                        type="checkbox"
+                        id="agreement"
+                        required
+                    >
+
+
+                    <label for="agreement">
+
+                        I confirm that the information provided
+                        is accurate and that I have the right to
+                        sell this item.
+
+                    </label>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ACTIONS
+            ================================================== -->
+
+            <div class="form-actions">
+
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="cancelListing()"
+                >
+                    Cancel
+                </button>
+
+
+                <button
+                    type="button"
+                    class="cancel-btn"
+                    onclick="saveDraft()"
+                >
+                    Save Draft
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="publish-btn"
+                >
+                    Publish Listing
+                </button>
+
+            </div>
+
+        </form>
+
+    </section>
+
+
+    <!-- =====================================================
+         SIDE COLUMN
+    ====================================================== -->
+
+    <aside class="side-column">
+
+
+        <!-- =================================================
+             SELLING TIPS
+        ================================================== -->
+
+        <div class="side-card">
+
+            <h3>
+                Tips for a Great Listing
+            </h3>
+
+
+            <div class="tip">
+
+                <div class="tip-icon">
+                    📸
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Add Clear Photos
+                    </h4>
+
+
+                    <p>
+                        Good photos help buyers
+                        understand your item.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="tip">
+
+                <div class="tip-icon">
+                    💰
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Set a Fair Price
+                    </h4>
+
+
+                    <p>
+                        Check similar listings
+                        before setting your price.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="tip">
+
+                <div class="tip-icon">
+                    📝
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Write a Detailed Description
+                    </h4>
+
+
+                    <p>
+                        Mention the condition,
+                        age and important features.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="tip">
+
+                <div class="tip-icon">
+                    📍
+                </div>
+
+
+                <div>
+
+                    <h4>
+                        Choose a Clear Location
+                    </h4>
+
+
+                    <p>
+                        Select a convenient campus
+                        meeting point.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             SAFETY
+        ================================================== -->
+
+        <div class="side-card safety-card">
+
+
+            <div class="safety-header">
+
+                <div class="safety-header-icon">
+                    🛡️
+                </div>
+
+
+                <h3>
+                    Stay Safe
+                </h3>
+
+            </div>
+
+
+            <p>
+
+                Meet buyers or sellers in public
+                campus locations. Verify the item
+                before accepting payment and never
+                share your password or sensitive
+                account information.
+
+            </p>
+
+        </div>
+
+
+        <!-- =================================================
+             LISTING INFO
+        ================================================== -->
+
+        <div class="side-card">
+
+            <h3>
+                Listing Guidelines
+            </h3>
+
+
+            <div class="tip">
+
+                <div class="tip-icon">
+                    ✓
+                </div>
+
+
+                <div>
+
+                    <p>
+                        Only list items that are
+                        allowed by your college.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="tip">
+
+                <div class="tip-icon">
+                    ✓
+                </div>
+
+
+                <div>
+
+                    <p>
+                        Use accurate product
+                        information.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="tip">
+
+                <div class="tip-icon">
+                    ✓
+                </div>
+
+
+                <div>
+
+                    <p>
+                        Do not post misleading
+                        images or prices.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+</main>
+
+
+<!-- =========================================================
+     OVERLAY
+========================================================= -->
+
+<div
+    class="overlay"
+    id="overlay"
+>
+</div>
+
+
+<!-- =========================================================
+     SUCCESS POPUP
+========================================================= -->
+
+<div
+    class="success-popup"
+    id="successPopup"
+>
+
+    <div class="success-icon">
+        ✓
+    </div>
+
+
+    <h2>
+        Listing Published!
+    </h2>
+
+
+    <p>
+        Your item has been successfully added
+        to Campus Marketplace.
+    </p>
+
+
+    <button
+        class="success-button"
+        onclick="goToBrowse()"
+    >
+        View Listings
+    </button>
+
+</div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+
+<script>
+
+
+    /* =====================================================
+       IMAGE UPLOAD
+    ===================================================== */
+
+    const imageInput =
+        document.getElementById(
+            "imageInput"
+        );
+
+
+    const previewContainer =
+        document.getElementById(
+            "previewContainer"
+        );
+
+
+    let selectedImages = [];
+
+
+    imageInput.addEventListener(
+        "change",
+        function() {
+
+            const files =
+                Array.from(this.files);
+
+
+            if (
+                selectedImages.length +
+                files.length >
+                5
+            ) {
+
+                alert(
+                    "You can upload a maximum of 5 photos."
+                );
+
+                return;
+
+            }
+
+
+            files.forEach(function(file) {
+
+                if (
+                    !file.type.startsWith(
+                        "image/"
+                    )
+                ) {
+
+                    return;
+
+                }
+
+
+                selectedImages.push(file);
+
+            });
+
+
+            renderPreviews();
+
+        }
+    );
+
+
+    /* =====================================================
+       RENDER IMAGE PREVIEWS
+    ===================================================== */
+
+    function renderPreviews() {
+
+        previewContainer.innerHTML = "";
+
+
+        if (
+            selectedImages.length === 0
+        ) {
+
+            previewContainer.classList.remove(
+                "show"
+            );
+
+            return;
+
+        }
+
+
+        previewContainer.classList.add(
+            "show"
+        );
+
+
+        selectedImages.forEach(
+            function(file, index) {
+
+
+                const reader =
+                    new FileReader();
+
+
+                reader.onload =
+                    function(event) {
+
+
+                        const box =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        box.className =
+                            "preview-box";
+
+
+                        box.innerHTML = `
+
+                            <img
+                                src="${event.target.result}"
+                                alt="Item photo"
+                            >
+
+                            <button
+                                type="button"
+                                class="remove-image"
+                                onclick="removeImage(${index})"
+                            >
+                                ×
+                            </button>
+
+                        `;
+
+
+                        previewContainer.appendChild(
+                            box
+                        );
+
+                    };
+
+
+                reader.readAsDataURL(file);
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       REMOVE IMAGE
+    ===================================================== */
+
+    function removeImage(index) {
+
+        selectedImages.splice(
+            index,
+            1
+        );
+
+
+        renderPreviews();
+
+
+        imageInput.value = "";
+
+    }
+
+
+    /* =====================================================
+       PUBLISH LISTING
+    ===================================================== */
+
+    function publishItem(event) {
+
+        event.preventDefault();
+
+
+        const title =
+            document.getElementById(
+                "itemTitle"
+            ).value.trim();
+
+
+        const category =
+            document.getElementById(
+                "category"
+            ).value;
+
+
+        const condition =
+            document.getElementById(
+                "condition"
+            ).value;
+
+
+        const price =
+            document.getElementById(
+                "price"
+            ).value;
+
+
+        const location =
+            document.getElementById(
+                "location"
+            ).value;
+
+
+        const description =
+            document.getElementById(
+                "description"
+            ).value.trim();
+
+
+        const agreement =
+            document.getElementById(
+                "agreement"
+            ).checked;
+
+
+        if (
+            !title ||
+            !category ||
+            !condition ||
+            !price ||
+            !location ||
+            !description
+        ) {
+
+            alert(
+                "Please fill in all required fields."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            Number(price) < 0
+        ) {
+
+            alert(
+                "Price cannot be negative."
+            );
+
+            return;
+
+        }
+
+
+        if (
+            description.length < 10
+        ) {
+
+            alert(
+                "Please provide a more detailed description."
+            );
+
+            return;
+
+        }
+
+
+        if (!agreement) {
+
+            alert(
+                "Please confirm the listing information."
+            );
+
+            return;
+
+        }
+
+
+        /* STORE LISTING LOCALLY */
+
+        const listing = {
+
+            id: Date.now(),
+
+            title: title,
+
+            category: category,
+
+            condition: condition,
+
+            price: Number(price),
+
+            location: location,
+
+            description: description,
+
+            contact:
+                document.querySelector(
+                    'input[name="contact"]:checked'
+                ).value,
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        let listings =
+            JSON.parse(
+                localStorage.getItem(
+                    "campusListings"
+                )
+            ) || [];
+
+
+        listings.push(listing);
+
+
+        localStorage.setItem(
+            "campusListings",
+            JSON.stringify(listings)
+        );
+
+
+        /* SHOW SUCCESS */
+
+        document
+            .getElementById(
+                "overlay"
+            )
+            .classList.add(
+                "show"
+            );
+
+
+        document
+            .getElementById(
+                "successPopup"
+            )
+            .classList.add(
+                "show"
+            );
+
+
+        /* CLEAR DRAFT */
+
+        localStorage.removeItem(
+            "campusDraft"
+        );
+
+    }
+
+
+    /* =====================================================
+       SAVE DRAFT
+    ===================================================== */
+
+    function saveDraft() {
+
+        const draft = {
+
+            title:
+                document.getElementById(
+                    "itemTitle"
+                ).value,
+
+            category:
+                document.getElementById(
+                    "category"
+                ).value,
+
+            condition:
+                document.getElementById(
+                    "condition"
+                ).value,
+
+            price:
+                document.getElementById(
+                    "price"
+                ).value,
+
+            location:
+                document.getElementById(
+                    "location"
+                ).value,
+
+            description:
+                document.getElementById(
+                    "description"
+                ).value,
+
+            contact:
+                document.querySelector(
+                    'input[name="contact"]:checked'
+                ).value
+
+        };
+
+
+        localStorage.setItem(
+            "campusDraft",
+            JSON.stringify(draft)
+        );
+
+
+        alert(
+            "Your listing has been saved as a draft."
+        );
+
+    }
+
+
+    /* =====================================================
+       LOAD DRAFT
+    ===================================================== */
+
+    function loadDraft() {
+
+        const saved =
+            localStorage.getItem(
+                "campusDraft"
+            );
+
+
+        if (!saved) {
+
+            return;
+
+        }
+
+
+        const draft =
+            JSON.parse(saved);
+
+
+        document.getElementById(
+            "itemTitle"
+        ).value =
+            draft.title || "";
+
+
+        document.getElementById(
+            "category"
+        ).value =
+            draft.category || "";
+
+
+        document.getElementById(
+            "condition"
+        ).value =
+            draft.condition || "";
+
+
+        document.getElementById(
+            "price"
+        ).value =
+            draft.price || "";
+
+
+        document.getElementById(
+            "location"
+        ).value =
+            draft.location || "";
+
+
+        document.getElementById(
+            "description"
+        ).value =
+            draft.description || "";
+
+
+        if (draft.contact) {
+
+            const contact =
+                document.querySelector(
+                    'input[name="contact"][value="' +
+                    draft.contact +
+                    '"]'
+                );
+
+
+            if (contact) {
+
+                contact.checked = true;
+
+            }
+
+        }
+
+    }
+
+
+    /* =====================================================
+       CANCEL
+    ===================================================== */
+
+    function cancelListing() {
+
+        const confirmed =
+            confirm(
+                "Are you sure you want to cancel? Unsaved information will be lost."
+            );
+
+
+        if (confirmed) {
+
+            window.location.href =
+                "index.html";
+
+        }
+
+    }
+
+
+    /* =====================================================
+       BROWSE
+    ===================================================== */
+
+    function goToBrowse() {
+
+        window.location.href =
+            "Browse.html";
+
+    }
+
+
+    /* =====================================================
+       NOTIFICATIONS
+    ===================================================== */
+
+    function toggleNotifications() {
+
+        document
+            .getElementById(
+                "notificationPopup"
+            )
+            .classList.toggle(
+                "show"
+            );
+
+    }
+
+
+    /* =====================================================
+       CLOSE NOTIFICATION
+    ===================================================== */
+
+    document.addEventListener(
+        "click",
+        function(event) {
+
+            const popup =
+                document.getElementById(
+                    "notificationPopup"
+                );
+
+
+            const button =
+                document.querySelector(
+                    ".notification-btn"
+                );
+
+
+            if (
+                !popup.contains(event.target) &&
+                !button.contains(event.target)
+            ) {
+
+                popup.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       LOAD DRAFT ON PAGE LOAD
+    ===================================================== */
+
+    window.addEventListener(
+        "DOMContentLoaded",
+        loadDraft
+    );
+
+</script>
+
+
+</body>
+
+</html>
