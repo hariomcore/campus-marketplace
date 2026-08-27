@@ -1385,7 +1385,17 @@
      JAVASCRIPT
 ========================================================= -->
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+
+        const SUPABASE_URL = "https://kgblcekcxkkmigjsbwbo.supabase.co";
+    const SUPABASE_KEY = "YOUR_COMPLETE_PUBLISHABLE_KEY";
+
+    const supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
 
 
     /* =====================================================
@@ -1584,7 +1594,7 @@
        REGISTER USER
     ===================================================== */
 
-    function registerUser(event) {
+    async function registerUser(event) {
 
         event.preventDefault();
 
@@ -1807,27 +1817,6 @@
            CHECK EXISTING USER
         ================================================= */
 
-        const existingUser =
-            JSON.parse(
-                localStorage.getItem(
-                    "campusUser"
-                )
-            );
-
-
-        if (
-            existingUser &&
-            existingUser.email === email
-        ) {
-
-            showError(
-                "An account with this email already exists."
-            );
-
-            return;
-
-        }
-
 
         /* =================================================
            SAVE USER
@@ -1838,37 +1827,26 @@
            in a real production application.
         ================================================= */
 
-        const user = {
+            const { data, error } =
+        await supabaseClient.auth.signUp({
+            email: email,
+            password: passwordValue,
+            options: {
+                data: {
+                    fullName: fullName,
+                    studentId: studentId,
+                    phone: phone,
+                    department: department,
+                    year: year
+                    }
+                }
+            }
+        });
 
-            fullName:
-                fullName,
-
-            studentId:
-                studentId,
-
-            email:
-                email,
-
-            phone:
-                phone,
-
-            department:
-                department,
-
-            year:
-                year,
-
-            registeredAt:
-                new Date().toISOString()
-
-        };
-
-
-        localStorage.setItem(
-            "campusUser",
-            JSON.stringify(user)
-        );
-
+            if (error) {
+            showError(error.message);
+            return;
+            }
 
         /* =================================================
            SUCCESS
