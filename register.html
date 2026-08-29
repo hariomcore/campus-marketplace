@@ -349,48 +349,34 @@
         }
 
         .password-lock {
-            position: absolute;
+            position: absolute !important;
+            left: 13px !important;
+            top: 50% !important;
+            transform: translateY(calc(-50% - 4px)) !important;
 
-            left: 13px;
-            top: 50%;
-
-            transform: translateY(-50%);
-
-            width: 18px;
-            height: 18px;
-
+            width: 18px !important;
+            height: 18px !important;
             fill: none;
-
-            stroke: #7b8290;
-
+            stroke: #7d8298;
             stroke-width: 1.6;
-
             stroke-linecap: round;
             stroke-linejoin: round;
-
             pointer-events: none;
         }
 
         .show-password {
-            position: absolute;
+            position: absolute !important;
+            right: 11px !important;
+            top: 50% !important;
+            transform: translateY(calc(-50% - 4px)) !important;
 
-            right: 11px;
-            top: 50%;
-
-            transform: translateY(-50%);
-
-            width: 25px;
-            height: 25px;
-
+            width: 25px !important;
+            height: 25px !important;
             padding: 3px;
-
             border: none;
-
             background: transparent;
-
             cursor: pointer;
         }
-
         .show-password svg {
             width: 18px;
             height: 18px;
@@ -1148,23 +1134,29 @@
 
                         <svg
                             class="password-lock"
+                            width="20"
+                            height="20"
                             viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
                         >
-
                             <rect
                                 x="5"
                                 y="10"
                                 width="14"
                                 height="10"
                                 rx="2"
-                            ></rect>
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            />
 
                             <path
-                                d="M8 10V7a4 4 0 0 1 8 0v3"
-                            ></path>
-
+                                d="M8 10V7C8 4.24 9.79 2.5 12 2.5C14.21 2.5 16 4.24 16 7V10"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                            />
                         </svg>
-
 
                         <input
                             type="password"
@@ -1172,7 +1164,7 @@
                             placeholder="Create a password"
                             minlength="8"
                             required
-                        >
+                        >_
 
 
                         <!-- Show Password -->
@@ -1255,23 +1247,29 @@
 
                         <svg
                             class="password-lock"
+                            width="20"
+                            height="20"
                             viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
                         >
-
                             <rect
                                 x="5"
                                 y="10"
                                 width="14"
                                 height="10"
                                 rx="2"
-                            ></rect>
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            />
 
                             <path
-                                d="M8 10V7a4 4 0 0 1 8 0v3"
-                            ></path>
-
+                                d="M8 10V7C8 4.24 9.79 2.5 12 2.5C14.21 2.5 16 4.24 16 7V10"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                            />
                         </svg>
-
 
                         <input
                             type="password"
@@ -1307,6 +1305,8 @@
                         </button>
 
                     </div>
+
+                    <div id="passwordMatchMessage" class="password-match-message"></div>
 
                 </div>
 
@@ -1389,8 +1389,8 @@
 
 <script>
 
-        const SUPABASE_URL = "https://kgblcekcxkkmigjsbwbo.supabase.co";
-    const SUPABASE_KEY = "YOUR_COMPLETE_PUBLISHABLE_KEY";
+    const SUPABASE_URL = "https://kgblcekcxkkmigjsbwbo.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_vevfsasP9ZzzU8zCLh5qWQ_H4uLd_2W";
 
     const supabaseClient = window.supabase.createClient(
         SUPABASE_URL,
@@ -1403,64 +1403,40 @@
     ===================================================== */
 
     function togglePassword(inputId, button) {
+    const input = document.getElementById(inputId);
 
-        const input =
-            document.getElementById(inputId);
+    if (!input) {
+        console.error("Input not found:", inputId);
+        return;
+    }
 
+    if (input.type === "password") {
+        input.type = "text";
+    } else {
+        input.type = "password";
+    }
+    }
 
-        if (input.type === "password") {
+    const confirmPasswordInput = document.getElementById("confirmPassword");
+    const passwordMatchMessage = document.getElementById("passwordMatchMessage");
 
-            input.type = "text";
+    confirmPasswordInput.addEventListener("input", function () {
+        const password = document.getElementById("password").value;
+        const confirmPassword = confirmPasswordInput.value;
 
-
-            button.innerHTML = `
-
-                <svg viewBox="0 0 24 24">
-
-                    <path d="M3 3l18 18"></path>
-
-                    <path
-                        d="M10.6 10.6a2.5 2.5 0 0 0 3.5 3.5"
-                    ></path>
-
-                    <path
-                        d="M9.9 5.2A10.8 10.8 0 0 1 12 5c6.5 0 10 7 10 7a17.6 17.6 0 0 1-3.1 3.9"
-                    ></path>
-
-                    <path
-                        d="M6.1 6.1C3.4 8.1 2 12 2 12s3.5 7 10 7c1.8 0 3.4-.5 4.8-1.2"
-                    ></path>
-
-                </svg>
-
-            `;
-
-        } else {
-
-            input.type = "password";
-
-
-            button.innerHTML = `
-
-                <svg viewBox="0 0 24 24">
-
-                    <path
-                        d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"
-                    ></path>
-
-                    <circle
-                        cx="12"
-                        cy="12"
-                        r="2.5"
-                    ></circle>
-
-                </svg>
-
-            `;
-
+        if (confirmPassword === "") {
+            passwordMatchMessage.textContent = "";
+            return;
         }
 
-    }
+        if (password !== confirmPassword) {
+            passwordMatchMessage.textContent = "Passwords do not match.";
+            passwordMatchMessage.className = "password-match-message error";
+        } else {
+            passwordMatchMessage.textContent = "Passwords match.";
+            passwordMatchMessage.className = "password-match-message success";
+        }
+    });
 
 
     /* =====================================================
@@ -1470,12 +1446,10 @@
     const password =
         document.getElementById("password");
 
-
     password.addEventListener(
-        "input",
-        checkPassword
-    );
-
+    "input",
+    checkPassword
+);
 
     function checkPassword() {
 
@@ -1827,24 +1801,24 @@
            in a real production application.
         ================================================= */
 
-            const { data, error } =
-        await supabaseClient.auth.signUp({
-            email: email,
-            password: passwordValue,
-            options: {
-                data: {
-                    fullName: fullName,
-                    studentId: studentId,
-                    phone: phone,
-                    department: department,
-                    year: year
+            const { data, error: authError } =
+                await supabaseClient.auth.signUp({
+                    email: email,
+                    password: passwordValue,
+                    options: {
+                        data: {
+                            fullName: fullName,
+                            studentId: studentId,
+                            phone: phone,
+                            department: department,
+                            year: year
+                        }
                     }
-                }
-            }
-        });
+                });
 
-            if (error) {
-            showError(error.message);
+
+            if (authError) {
+            showError(authError.message);
             return;
             }
 
