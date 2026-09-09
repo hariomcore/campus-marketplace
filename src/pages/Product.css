@@ -380,7 +380,7 @@
 
 .product-page .actions {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 11px;
     margin-top: 20px;
 }
@@ -393,6 +393,23 @@
     font-weight: 700;
     cursor: pointer;
     transition: 0.2s;
+}
+
+.product-page .cart-btn {
+  height: 46px;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.2s;
+  border: 1px solid #6338df;
+  background: white;
+  color: #6338df;
+}
+
+.product-page .cart-btn:hover {
+  background: #f4f0ff;
+  transform: translateY(-1px);
 }
 
 .product-page .contact-btn {

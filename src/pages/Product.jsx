@@ -6,13 +6,13 @@ const productDatabase = {
   "Engineering Mathematics Book": {
     category: "Books & Notes",
     price: "₹350",
-    condition: "Good Condition",
+    condition: "Like New",
     image:
-      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=1000&q=85",
+      "https://cbspd.s3.ap-south-1.amazonaws.com/assets/images/m37TTvJYYCNsdf2V6X951732859387.jpg",
     description:
       "Engineering Mathematics book in good condition. Useful for engineering students for mathematics courses, assignments and examinations.",
-    seller: "Aman Kumar",
-    sellerMeta: "Student · CSE · 3rd Year",
+    seller: "Hariom Thakur",
+    sellerMeta: "Student · CSIT · 2nd Year",
     avatar: "AK",
   },
 
@@ -24,8 +24,8 @@ const productDatabase = {
       "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1000&q=85",
     description:
       "HP Pavilion laptop in excellent condition. Suitable for programming, college projects, assignments and everyday student use.",
-    seller: "Aman Kumar",
-    sellerMeta: "Student · CSE · 3rd Year",
+    seller: "Harsh Pandey",
+    sellerMeta: "Student · CSIT · 2nd Year",
     avatar: "AK",
   },
 
@@ -37,8 +37,8 @@ const productDatabase = {
       "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&w=1000&q=85",
     description:
       "Comfortable study chair in good condition. Perfect for studying, coding or working from a hostel room.",
-    seller: "Aman Kumar",
-    sellerMeta: "Student · CSE · 3rd Year",
+    seller: "Daksh Srivastava",
+    sellerMeta: "Student · CSIT · 2nd Year",
     avatar: "AK",
   },
 
@@ -50,8 +50,8 @@ const productDatabase = {
       "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=1000&q=85",
     description:
       "Boat headphones in excellent condition. Suitable for music, online classes and entertainment.",
-    seller: "Aman Kumar",
-    sellerMeta: "Student · CSE · 3rd Year",
+    seller: "Hariom Kumar",
+    sellerMeta: "Student · CSE · 2nd Year",
     avatar: "AK",
   },
 
@@ -63,21 +63,21 @@ const productDatabase = {
       "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=1000&q=85",
     description:
       "Skybags backpack in good condition. Spacious and suitable for college books, laptop and everyday essentials.",
-    seller: "Aman Kumar",
-    sellerMeta: "Student · CSE · 3rd Year",
+    seller: "Rohit Thakur",
+    sellerMeta: "Student · CSE · 4th Year",
     avatar: "AK",
   },
 
   "Yamaha Acoustic Guitar": {
     category: "Hobbies",
     price: "₹5,500",
-    condition: "Good Condition",
+    condition: "Like New",
     image:
       "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1000&q=85",
     description:
       "Yamaha acoustic guitar in good condition. Suitable for beginners and students interested in learning guitar.",
-    seller: "Aman Kumar",
-    sellerMeta: "Student · CSE · 3rd Year",
+    seller: "Pulkit Jha",
+    sellerMeta: "Student · CSE · 1st Year",
     avatar: "AK",
   },
 };
@@ -148,6 +148,33 @@ function Product() {
       setIsFavorite(true);
     }
   };
+
+  const addToCart = () => {
+  const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+
+  const alreadyInCart = cart.some(
+    (item) => item.name === product.name
+  );
+
+  if (alreadyInCart) {
+    alert("This item is already in your cart.");
+    return;
+  }
+
+  const cartItem = {
+    name: product.name,
+    price: product.price,
+    image: product.image,
+    category: product.category,
+    condition: product.condition,
+  };
+
+  cart.push(cartItem);
+
+  localStorage.setItem("cart", JSON.stringify(cart));
+
+  alert("Item added to cart!");
+};
 
   const goToBrowse = () => {
     navigate("/browse");
@@ -429,24 +456,31 @@ function Product() {
 
               <button
                 className="contact-btn"
-                onClick={() =>
-                  setShowContactModal(true)
-                }
-              >
+                onClick={() => {
+                setShowContactModal(true)
+                  }}
+                >
                 Contact Seller
+              </button>
+
+                <button
+                  className="cart-btn"
+                  onClick={addToCart}
+                >
+                    🛒 Add to Cart
               </button>
 
               <button
                 className="request-btn"
-                onClick={() =>
-                  setShowRequestModal(true)
-                }
-              >
+                onClick={() => {
+                setShowRequestModal(true)
+                  }}
+                >
                 Request to Buy
               </button>
 
             </div>
-
+            
             {/* SHARE */}
 
             <div className="share-row">

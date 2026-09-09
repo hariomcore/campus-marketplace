@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import Product from "./pages/Product";
 import Wishlist from "./pages/Wishlist";
 import Notifications from "./component/Notifications";
+import Cart from "./pages/Cart";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Route path="/product" element={<Product />} />
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/notifications" element={<Notifications />} />
+      <Route path="/cart" element={<Cart />} />
     </Routes>
   );
 }

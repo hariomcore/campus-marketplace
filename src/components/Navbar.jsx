@@ -82,6 +82,13 @@ function Navbar() {
           ♡
         </Link>
 
+        <button
+          className="cart-link"
+          onClick={() => navigate("/cart")}
+        >
+          🛒 Cart
+        </button>
+
         <Link to="/login" className="login-btn">
           <div className="profile-icon">♙</div>
 

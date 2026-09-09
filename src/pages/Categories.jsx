@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./Categories.css";
+import Navbar from "../components/Navbar";
+
 
 const categories = [
   {

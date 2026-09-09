@@ -12,7 +12,7 @@ function Home() {
       name: "Engineering Mathematics Book",
       price: "₹350",
       image:
-        "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=600&q=85",
+        "https://cbspd.s3.ap-south-1.amazonaws.com/assets/images/m37TTvJYYCNsdf2V6X951732859387.jpg",
       alt: "Engineering Mathematics Book",
     },
     {

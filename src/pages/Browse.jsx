@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect, useMemo, useState } from "react";
 import "./Browse.css";
+import Navbar from "../components/Navbar";
 
 const products = [
   {
@@ -211,85 +212,8 @@ function Browse() {
 
   return (
     <>
-      {/* ================= NAVBAR ================= */}
-
-      <header className="navbar">
-        <a href="/" className="logo">
-          <div className="logo-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M3 9.5 12 5l9 4.5-9 4.5L3 9.5Z" />
-              <path d="M6 11.2V16c3.5 2.3 8.5 2.3 12 0v-4.8" />
-              <path d="M21 10v5" />
-            </svg>
-          </div>
-
-          <div className="logo-text">
-            Campus
-            <br />
-            <span>Marketplace</span>
-          </div>
-        </a>
-
-        <nav className="nav-links">
-          <a href="/">Home</a>
-
-          <a href="/browse" className="active">
-            Browse
-          </a>
-
-          <a href="/categories">
-            Categories
-          </a>
-
-          <a href="/how-it-works">
-            How It Works
-          </a>
-
-          <a href="/about">
-            About Us
-          </a>
-        </nav>
-
-        <div className="nav-right">
-          <button
-            className="post-btn"
-            onClick={() => goTo("/post-item")}
-          >
-            + Post an Item
-          </button>
-
-          <button
-            className="notification-btn"
-            onClick={() =>
-              setNotificationsOpen(
-                (previous) => !previous
-              )
-            }
-            aria-label="Notifications"
-          >
-            <svg viewBox="0 0 24 24">
-              <path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9" />
-              <path d="M10 21h4" />
-            </svg>
-          </button>
-
-          <a href="/login" className="login-btn">
-            <div className="profile-icon">
-              <svg viewBox="0 0 24 24">
-                <circle
-                  cx="12"
-                  cy="8"
-                  r="3.5"
-                />
-                <path d="M5 21c.6-4 3-6 7-6s6.4 2 7 6" />
-              </svg>
-            </div>
-
-            <span>Login</span>
-          </a>
-        </div>
-      </header>
-
+      <Navbar />
+      
       {/* ================= NOTIFICATION ================= */}
 
       {notificationsOpen && (
