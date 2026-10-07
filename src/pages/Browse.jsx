@@ -10,7 +10,7 @@ const products = [
     price: 350,
     condition: "Good Condition",
     image:
-      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=700&q=85",
+      "https://cbspd.s3.ap-south-1.amazonaws.com/assets/images/m37TTvJYYCNsdf2V6X951732859387.jpg",
   },
   {
     name: "HP Pavilion Laptop",
@@ -65,6 +65,33 @@ const categories = [
 ];
 
 function Browse() {
+  const [postedProducts, setPostedProducts] = useState(() => {
+    return JSON.parse(localStorage.getItem("listings") || "[]");
+  });
+
+  useEffect(() => {
+  const listings = JSON.parse(
+    localStorage.getItem("listings") || "[]"
+  );
+
+  const cleanedListings = listings.filter(
+    (item) => Number(item.price) > 0
+  );
+
+  localStorage.setItem(
+    "listings",
+    JSON.stringify(cleanedListings)
+  );
+
+  setPostedProducts(cleanedListings);
+  }, []);
+
+  const cleanedProducts = postedProducts.filter(
+    (product) => Number(product.price) > 0
+  );
+  
+  const allProducts = [...products, ...cleanedProducts];
+
   const params = new URLSearchParams(window.location.search);
 
   const urlCategory = params.get("category");
@@ -114,7 +141,7 @@ function Browse() {
     const maximum =
       maxPrice === "" ? Infinity : Number(maxPrice);
 
-    let result = products.filter((product) => {
+    let result = allProducts.filter((product) => {
       const matchesSearch = product.name
         .toLowerCase()
         .includes(search.toLowerCase().trim());
@@ -446,7 +473,7 @@ function Browse() {
                     </div>
 
                     <div className="price">
-                      ₹{product.price.toLocaleString("en-IN")}
+                      ₹{Number(product.price || 0).toLocaleString("en-IN")}
                     </div>
 
                     <div className="product-bottom">

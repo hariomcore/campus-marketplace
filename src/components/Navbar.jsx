@@ -1,9 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
 import Notification from "./Notification";
 import { NavLink, Link, useNavigate } from "react-router-dom";
 
+const SUPABASE_URL = "https://kgblcekcxkkmigjsbwbo.supabase.co";
+
+const SUPABASE_KEY =
+  "sb_publishable_vevfsasP9ZzzU8zCLh5qWQ_H4uLd_2W";
+
+const supabase = createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
 function Navbar() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  const [profilePhoto, setProfilePhoto] = useState(
+    localStorage.getItem("profilePhoto") || null
+  );
+  useEffect(() => {
+  const getUser = async () => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    setUser(user);
+  };
+
+  getUser();
+
+    const handlePhotoChange = () => {
+      const photo = localStorage.getItem("profilePhoto");
+      setProfilePhoto(photo);
+    };
+
+    window.addEventListener(
+      "profilePhotoChanged",
+      handlePhotoChange
+    );
+
+    return () => {
+      window.removeEventListener(
+        "profilePhotoChanged",
+        handlePhotoChange
+      );
+    };
+  }, []);
+  
 
   const goToPostItem = () => {
     navigate("/post-item");
@@ -89,11 +133,43 @@ function Navbar() {
           🛒 Cart
         </button>
 
-        <Link to="/login" className="login-btn">
-          <div className="profile-icon">♙</div>
+      <div className="profile-area">
 
-          <span>Login</span>
+      <button
+        className="profile-icon"
+        onClick={() => {
+            if (user) {
+            navigate("/profile");
+          } else {
+            navigate("/login");
+          }
+        }}
+        title={user ? "Profile" : "Login"}
+      >
+        {profilePhoto ? (
+        <img
+          src={profilePhoto}
+          alt="Profile"
+        />
+          ) : (
+          "♙"
+          )}
+      </button>
+
+      {user ? (
+      <button
+        className="login-text"
+        onClick={() => navigate("/profile")}
+      >
+        Profile
+        </button>
+        ) : (
+        <Link to="/login" className="login-text">
+        Login
         </Link>
+        )}
+      </div>
+
       </div>
     </header>
   );

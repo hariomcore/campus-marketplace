@@ -1,0 +1,133 @@
+.profile-page {
+  min-height: 100vh;
+  background: #f7f8fc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.profile-card {
+  width: 100%;
+  max-width: 420px;
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(20, 20, 50, 0.08);
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: #6338df;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  overflow: hidden;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-card h1 {
+  margin: 0 0 10px;
+  color: #101b3a;
+  font-size: 28px;
+}
+
+.profile-email {
+  color: #666;
+  margin-bottom: 28px;
+}
+
+.profile-back-btn,
+.profile-logout-btn {
+  width: 100%;
+  height: 46px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.profile-edit-btn {
+  width: 100%;
+  height: 46px;
+  border-radius: 7px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-top: 10px;
+  border: none;
+  background: #6338df;
+  color: white;
+}
+
+.profile-edit-btn:hover {
+  background: #512dc4;
+}
+
+.profile-back-btn {
+  border: 1px solid #6338df;
+  background: white;
+  color: #6338df;
+}
+
+.profile-back-btn:hover {
+  background: #f4f0ff;
+}
+
+.profile-logout-btn {
+  border: none;
+  background: #6338df;
+  color: white;
+}
+
+.profile-logout-btn:hover {
+  background: #512dc4;
+}
+
+.photo-upload {
+  display: block;
+  width: fit-content;
+  margin: 12px auto 0;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: #6338df;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.photo-upload:hover {
+  background: #512dc4;
+}
+
+.photo-upload input {
+  display: none;
+}
+
+.profile-detail {
+  text-align: left;
+  margin: 10px 0;
+  padding: 10px 12px;
+  background: #f7f8fc;
+  border-radius: 7px;
+  color: #101b3a;
+  font-size: 14px;
+}
+
+.profile-detail strong {
+  display: inline-block;
+  min-width: 100px;
+}

@@ -1,22 +1,78 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { createClient } from "@supabase/supabase-js";
 import "./PostItem.css";
+
+const SUPABASE_URL = "https://kgblcekcxkkmigjsbwbo.supabase.co";
+const SUPABASE_KEY =
+  "sb_publishable_vevfsasP9ZzzU8zCLh5qWQ_H4uLd_2W";
+
+const supabase = createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
 
 function PostItem() {
   const [showNotifications, setShowNotifications] = useState(false);
   const [image, setImage] = useState(null);
+  useEffect(() => {
+  const checkUser = async () => {
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-
-    if (file) {
-      setImage(URL.createObjectURL(file));
+    if (!user) {
+      window.location.href = "/login";
     }
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  checkUser();
+  }, []);
 
-    alert("Your item has been posted successfully!");
+  const handleImageChange = (event) => {
+  const file = event.target.files[0];
+
+  if (file) {
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+
+    reader.readAsDataURL(file);
+  }
+  };
+
+  const handleSubmit = (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(event.target);
+
+  const newItem = {
+    id: Date.now(),
+    name: formData.get("name"),
+    price: formData.get("price"),
+    category: formData.get("category"),
+    condition: formData.get("condition"),
+    description: formData.get("description"),
+    location: formData.get("location"),
+    image: image,
+  };
+
+  const listings = JSON.parse(
+    localStorage.getItem("listings") || "[]"
+  );
+
+  listings.push(newItem);
+
+  localStorage.setItem(
+    "listings",
+    JSON.stringify(listings)
+  );
+
+  alert("Your item has been posted successfully!");
+
+  event.target.reset();
+  setImage(null);
   };
 
   return (
@@ -122,6 +178,7 @@ function PostItem() {
 
               <input
                 type="text"
+                name="name"
                 placeholder="e.g. Engineering Mathematics Book"
                 required
               />
@@ -139,7 +196,12 @@ function PostItem() {
                   <span>*</span>
                 </label>
 
-                <select required defaultValue="">
+                <select
+                  name="category"
+                  required
+                  defaultValue=""
+                >
+
                   <option value="" disabled>
                     Select category
                   </option>
@@ -165,7 +227,12 @@ function PostItem() {
                   <span>*</span>
                 </label>
 
-                <select required defaultValue="">
+                <select
+                  name="condition"
+                  required
+                  defaultValue=""
+                >
+
                   <option value="" disabled>
                     Select condition
                   </option>
@@ -196,6 +263,7 @@ function PostItem() {
 
                   <input
                     type="number"
+                    name="price"
                     min="0"
                     placeholder="Enter price"
                     required
@@ -214,6 +282,7 @@ function PostItem() {
 
                 <input
                   type="text"
+                  name="location"
                   placeholder="e.g. GL Bajaj Campus"
                   required
                 />
@@ -232,6 +301,7 @@ function PostItem() {
               </label>
 
               <textarea
+                name="description"
                 rows="6"
                 placeholder="Describe your item, its condition, features, etc."
                 required

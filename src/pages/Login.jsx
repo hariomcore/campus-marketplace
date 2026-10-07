@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { createClient } from "@supabase/supabase-js";
+import { useNavigate } from "react-router-dom";
 
 const SUPABASE_URL = "https://kgblcekcxkkmigjsbwbo.supabase.co";
 const SUPABASE_KEY =
@@ -12,11 +13,27 @@ const supabase = createClient(
 );
 
 function Login() {
+  const navigate = useNavigate();
+  
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [remember, setRemember] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const {
+        data: { user },
+      } = await supabase.auth.getUser();
+
+      if (user) {
+        navigate("/");
+      }
+    };
+
+    checkUser();
+  }, [navigate]);
 
   const handleLogin = async (event) => {
     event.preventDefault();

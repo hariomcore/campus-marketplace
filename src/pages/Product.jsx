@@ -87,10 +87,16 @@ function Product() {
   const [searchParams] = useSearchParams();
 
   const selectedProduct =
-    searchParams.get("name") || "Study Chair";
+  searchParams.get("name") || "Study Chair";
 
-  const product = productDatabase[selectedProduct];
+  const postedListings = JSON.parse(
+    localStorage.getItem("listings") || "[]"
+  );
 
+  const product = productDatabase[selectedProduct] || 
+    postedListings.find(
+      (item) => item.name === selectedProduct
+    );
   const [isFavorite, setIsFavorite] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
   const [showRequestModal, setShowRequestModal] = useState(false);

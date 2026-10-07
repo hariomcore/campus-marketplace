@@ -13,6 +13,7 @@ import Product from "./pages/Product";
 import Wishlist from "./pages/Wishlist";
 import Notifications from "./component/Notifications";
 import Cart from "./pages/Cart";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/notifications" element={<Notifications />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
   );
 }
